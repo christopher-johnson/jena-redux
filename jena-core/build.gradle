@@ -1,0 +1,59 @@
+apply plugin: 'osgi'
+
+description = 'Apache Jena - Core'
+
+ext {
+    moduleName = 'org.apache.jena.core'
+}
+
+dependencies {
+    compile project(':jena-iri')
+    compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+    compile group: 'org.apache.servicemix.bundles', name: 'org.apache.servicemix.bundles.xerces', version: '2.11.0_1'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    compile project(':jena-base')
+
+    testCompile project(':jena-base')
+
+    testCompile(group: 'org.xenei', name: 'junit-contracts', version: '0.2.0') {
+        exclude(module: 'commons-cli')
+    }
+    testCompile project(path: ':jena-base', configuration: 'testOutput')
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+    testCompile group: 'com.jayway.awaitility', name: 'awaitility', version: '1.7.0'
+}
+
+task packageTests(type: Jar) {
+    from sourceSets.test.output
+    classifier = 'tests'
+}
+
+artifacts.archives packageTests
+
+configurations {
+    testOutput
+}
+
+dependencies {
+    testOutput sourceSets.test.output
+}
+
+jar {
+    manifest {
+        description project.description
+        docURL project.docURL
+        vendor project.vendor
+        license project.license
+
+        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
+        instruction 'Require-Capability', '''\
+            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
+            osgi.serviceloader;
+                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
+                resolution:=mandatory; cardinality:=at_least_one
+            '''
+    }
+}

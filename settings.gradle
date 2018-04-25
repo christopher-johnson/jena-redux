@@ -1,0 +1,24 @@
+rootProject.name = 'jena-redux'
+include ':jena-arq'
+include ':jena-base'
+include ':jena-core'
+include ':jena-iri'
+include ':jena-rdfconnection'
+
+include ':jena-dboe-base'
+include ':jena-dboe-index'
+include ':jena-dboe-transaction'
+include ':jena-dboe-trans-data'
+include ':jena-tdb2'
+
+project(':jena-arq').projectDir = "$rootDir/jena-arq" as File
+project(':jena-base').projectDir = "$rootDir/jena-base" as File
+project(':jena-core').projectDir = "$rootDir/jena-core" as File
+project(':jena-iri').projectDir = "$rootDir/jena-iri" as File
+project(':jena-rdfconnection').projectDir = "$rootDir/jena-rdfconnection" as File
+
+project(':jena-dboe-base').projectDir = "$rootDir/jena-db/jena-dboe-base" as File
+project(':jena-dboe-index').projectDir = "$rootDir/jena-db/jena-dboe-index" as File
+project(':jena-dboe-transaction').projectDir = "$rootDir/jena-db/jena-dboe-transaction" as File
+project(':jena-dboe-trans-data').projectDir = "$rootDir/jena-db/jena-dboe-trans-data" as File
+project(':jena-tdb2').projectDir = "$rootDir/jena-db/jena-tdb2" as File

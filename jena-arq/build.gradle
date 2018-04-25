@@ -1,0 +1,79 @@
+apply plugin: 'osgi'
+
+description = 'Apache Jena - ARQ (SPARQL 1.1 Query Engine)'
+
+ext {
+    moduleName = 'org.apache.jena.arq'
+}
+
+dependencies {
+    compile project(':jena-base')
+    compile project(':jena-core')
+    compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+    compile group: 'org.glassfish.main', name: 'javax.annotation', version: '4.0-b33'
+    compile project(':jena-iri')
+
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3') {
+        exclude(module: 'commons-logging')
+    }
+
+    compile(group: 'com.github.jsonld-java', name: 'jsonld-java', version: '0.11.1') {
+        exclude(module: 'commons-logging')
+        exclude(module: 'httpclient-cache')
+        exclude(module: 'httpclient')
+        exclude(module: 'httpclient-osgi')
+        exclude(module: 'httpcore-osgi')
+        exclude(module: 'slf4j-api')
+    }
+
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient-cache', version: '4.5.3') {
+        exclude(module: 'commons-logging')
+    }
+
+    compile(group: 'org.apache.thrift', name: 'libthrift', version: '0.10.0') {
+        exclude(module: 'httpcore')
+        exclude(module: 'commons-lang3')
+    }
+
+    compile group: 'org.apache.servicemix.bundles', name: 'org.apache.servicemix.bundles.xerces', version: '2.11.0_1'
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+
+    testCompile project(path: ':jena-base', configuration: 'testOutput')
+    testCompile project(path: ':jena-core', configuration: 'testOutput')
+    testCompile group: 'com.jayway.awaitility', name: 'awaitility', version: '1.7.0'
+}
+
+task packageTests(type: Jar) {
+    from sourceSets.test.output
+    classifier = 'tests'
+}
+
+artifacts.archives packageTests
+
+configurations {
+    testOutput
+}
+
+dependencies {
+    testOutput sourceSets.test.output
+}
+
+jar {
+    manifest {
+        description project.description
+        docURL project.docURL
+        vendor project.vendor
+        license project.license
+
+        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
+        instruction 'Require-Capability', '''\
+            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
+            osgi.serviceloader;
+                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
+                resolution:=mandatory; cardinality:=at_least_one
+            '''
+    }
+}

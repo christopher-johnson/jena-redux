@@ -1,0 +1,18 @@
+description = 'Apache Jena - DBOE Transactional Datastructures'
+
+dependencies {
+    compile project(':jena-dboe-base')
+    compile project(':jena-dboe-index')
+    compile project(':jena-dboe-transaction')
+    compile project(':jena-base')
+    compile project(':jena-arq')
+    compile project(':jena-core')
+    testCompile project(path: ':jena-dboe-base', configuration: 'testOutput')
+    testCompile project(path: ':jena-dboe-index', configuration: 'testOutput')
+}
+
+task packageTests(type: Jar) {
+    from sourceSets.test.output
+    classifier = 'tests'
+}
+artifacts.archives packageTests

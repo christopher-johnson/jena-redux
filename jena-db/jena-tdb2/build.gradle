@@ -1,0 +1,41 @@
+apply plugin: 'osgi'
+
+description = 'Apache Jena - Apache Jena - TDB2'
+
+ext {
+  moduleName = 'org.apache.jena.tdb2'
+}
+
+dependencies {
+  compile project(':jena-dboe-transaction')
+  compile project(':jena-dboe-trans-data')
+  compile project(':jena-dboe-index')
+  testCompile project(path: ':jena-base', configuration: 'testOutput')
+  testCompile project(path: ':jena-arq', configuration: 'testOutput')
+  testCompile project(path: ':jena-core', configuration: 'testOutput')
+}
+
+task packageTests(type: Jar) {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+artifacts.archives packageTests
+
+jar {
+  manifest {
+    description project.description
+    docURL project.docURL
+    vendor project.vendor
+    license project.license
+
+    instruction 'Automatic-Module-Name', moduleName
+    instruction 'Import-Package', '*'
+    instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
+    instruction 'Require-Capability', '''\
+            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
+            osgi.serviceloader;
+                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
+                resolution:=mandatory; cardinality:=at_least_one
+            '''
+  }
+}
