@@ -1,0 +1,60 @@
+apply plugin: 'osgi'
+
+description = 'Apache Jena - Core'
+
+ext {
+    moduleName = 'org.apache.jena.core'
+}
+
+dependencies {
+    compile project(':jena.iri')
+    compile("com.google.guava:guava:$guavaVersion")
+    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion")
+    compile("commons-cli:commons-cli:$commonsCliVersion")
+    compile("commons-codec:commons-codec:$commonsCodecVersion")
+    compile project(':jena.base')
+
+    testCompile project(':jena.base')
+
+    testCompile("org.xenei:junit-contracts:$junitContractsVersion") {
+        exclude(module: 'commons-cli')
+    }
+    testCompile project(path: ':jena.base', configuration: 'testOutput')
+    testCompile("org.mockito:mockito-all:$mockitoVersion")
+    testCompile("com.jayway.awaitility:awaitility:$awaitilityVersion")
+}
+
+task packageTests(type: Jar) {
+    from sourceSets.test.output
+    classifier = 'tests'
+}
+
+artifacts.archives packageTests
+
+configurations {
+    testOutput
+}
+
+dependencies {
+    testOutput sourceSets.test.output
+}
+
+jar {
+    manifest {
+        description project.description
+        docURL project.docURL
+        vendor project.vendor
+        license project.license
+
+        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
+        instruction 'Require-Capability', '''\
+            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
+            osgi.serviceloader;
+                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
+                resolution:=mandatory; cardinality:=at_least_one
+            '''
+    }
+    appendix 'jpms'
+}

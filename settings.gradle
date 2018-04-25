@@ -1,0 +1,16 @@
+rootProject.name = 'jena-redux'
+include ':jena.arq'
+include ':jena.base'
+include ':jena.core'
+include ':jena.iri'
+include ':jena.rdfconnection'
+
+include ':jena.dboe'
+
+project(':jena.arq').projectDir = "$rootDir/jena.arq" as File
+project(':jena.base').projectDir = "$rootDir/jena.base" as File
+project(':jena.core').projectDir = "$rootDir/jena.core" as File
+project(':jena.iri').projectDir = "$rootDir/jena.iri" as File
+project(':jena.rdfconnection').projectDir = "$rootDir/jena.rdfconnection" as File
+
+project(':jena.dboe').projectDir = "$rootDir/jena.dboe" as File

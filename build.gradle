@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.1'
+    }
+}
+
+ext {
+    awaitilityVersion = '1.7.0'
+    commonsCodecVersion = '1.11'
+    commonsCliVersion = '1.4'
+    commonsCsvVersion = '1.5'
+    commonsIoVersion = '2.6'
+    commonsLoggingVersion = '1.2'
+    commonsLangVersion = '3.4'
+    dexxCollectionVersion = '0.7'
+    geronimoJmsSpecVersion = '1.1.1'
+    geronimoAnnotationSpecVersion = '1.0-alpha-1'
+    guavaVersion = '24.1-jre'
+    httpClientVersion = '4.5.3'
+    javaxAnnotationVersion = '4.0-b33'
+    jsonLdVersion = '0.11.1'
+    jsr305Version = '3.0.2'
+    libthriftVersion = '0.10.0'
+    log4jVersion = '1.2.17'
+    servicemixXercesVersion = '2.11.0_1'
+    slf4jVersion = '1.7.25'
+    xmlApisVersion = '1.4.01'
+    thriftVersion = '0.11.0'
+
+    /* Testing */
+    apiguardianVersion = '1.0.0'
+    hamcrestLibraryVersion = '1.3'
+    junitContractsVersion = '0.2.0'
+    junitVersion = '4.12'
+    junitPlatformVersion = '1.1.1'
+    logbackVersion = '1.2.3'
+    mockitoVersion = '1.10.19'
+
+    projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
+}
+
+allprojects { subproj ->
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'idea'
+
+    ext {
+        vendor = 'Apache Jena'
+        homepage = 'http://jena.apache.org/'
+        docURL = 'http://jena.apache.org/'
+        license = 'Apache 2'
+    }
+
+    group = 'org.apache.jena'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        compile("org.slf4j:slf4j-api:$slf4jVersion")
+        compile("org.slf4j:slf4j-log4j12:$slf4jVersion")
+        compile("log4j:log4j:$log4jVersion")
+        testCompile("junit:junit:$junitVersion")
+        testCompile("org.hamcrest:hamcrest-core:$hamcrestLibraryVersion")
+    }
+}
+
+subprojects { subproj ->
+    sourceCompatibility = 1.10
+    targetCompatibility = 1.10
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+    }
+
+}

@@ -1,0 +1,2 @@
+org.apache.jena.arq.riot.system.InitRIOT
+org.apache.jena.arq.sparql.system.InitARQ
