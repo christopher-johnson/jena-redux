@@ -24,7 +24,7 @@ import java.util.ArrayList ;
 import java.util.Arrays ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public class TestListUtils extends BaseTest

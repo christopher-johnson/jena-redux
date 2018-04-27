@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.modify;
 import java.util.concurrent.atomic.AtomicLong ;
 
 import org.apache.jena.base.atlas.iterator.Iter ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.NodeFactory ;
 import org.apache.jena.core.rdf.model.Model ;

@@ -20,7 +20,7 @@ package org.apache.jena.base.atlas.io;
 
 import java.io.StringWriter ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public class TestBufferingWriter extends BaseTest {

@@ -20,7 +20,7 @@ package org.apache.jena.arq.riot.stream;
 
 import java.io.File ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.atlas.web.TypedInputStream ;
 import org.apache.jena.arq.riot.WebContent ;
 import org.apache.jena.arq.riot.system.stream.LocatorFile ;

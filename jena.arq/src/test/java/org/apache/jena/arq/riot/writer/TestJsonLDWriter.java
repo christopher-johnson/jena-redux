@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 
 import org.apache.jena.arq.atlas.json.JsonObject;
 import org.apache.jena.arq.atlas.json.JsonString;
-import org.apache.jena.base.atlas.junit.BaseTest;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.query.DatasetFactory;
 import org.apache.jena.core.rdf.model.Model;
 import org.apache.jena.core.rdf.model.ModelFactory;

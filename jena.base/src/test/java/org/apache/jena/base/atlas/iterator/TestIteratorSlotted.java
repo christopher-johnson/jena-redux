@@ -23,7 +23,7 @@ import java.util.Collection ;
 import java.util.Iterator ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 import org.junit.runner.RunWith ;
 import org.junit.runners.Parameterized ;

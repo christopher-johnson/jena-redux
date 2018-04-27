@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.web;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.core.graph.GraphUtil ;
 import org.apache.jena.core.graph.Node ;

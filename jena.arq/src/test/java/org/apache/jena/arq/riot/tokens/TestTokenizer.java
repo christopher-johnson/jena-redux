@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.tokens ;
 import java.io.ByteArrayInputStream ;
 
 import org.apache.jena.base.atlas.io.PeekReader ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.riot.RiotException ;
 import org.apache.jena.arq.riot.RiotParseException ;

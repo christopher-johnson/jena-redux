@@ -21,7 +21,7 @@ package org.apache.jena.arq.atlas.json;
 import static org.apache.jena.arq.atlas.json.LibJsonTest.read ;
 import static org.apache.jena.arq.atlas.json.LibJsonTest.writeRead ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 /** Tests that are of extensions of JSON */ 

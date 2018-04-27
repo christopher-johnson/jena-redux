@@ -23,7 +23,7 @@ import java.util.Collection ;
 import java.util.HashSet ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.sparql.core.Var ;
 import org.apache.jena.arq.sparql.sse.SSE ;
 import org.junit.Test ;

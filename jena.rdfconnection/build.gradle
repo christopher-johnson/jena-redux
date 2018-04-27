@@ -1,9 +1,14 @@
 apply plugin: 'osgi'
+apply plugin: 'com.zyxist.chainsaw'
 
 description = 'Apache Jena - RDF Connection'
 
 ext {
-    moduleName = 'org.apache.jena.rdfconnection'
+    javaModuleName = 'org.apache.jena.rdfconnection'
+}
+
+javaModule {
+    name = javaModuleName
 }
 
 dependencies {
@@ -26,15 +31,9 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Automatic-Module-Name', javaModuleName
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
-        instruction 'Require-Capability', '''\
-            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
-            osgi.serviceloader;
-                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
-                resolution:=mandatory; cardinality:=at_least_one
-            '''
+        instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
     appendix 'jpms'
 }

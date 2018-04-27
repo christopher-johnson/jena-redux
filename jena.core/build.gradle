@@ -1,27 +1,40 @@
 apply plugin: 'osgi'
+apply plugin: 'com.zyxist.chainsaw'
 
 description = 'Apache Jena - Core'
 
 ext {
-    moduleName = 'org.apache.jena.core'
+    javaModuleName = 'org.apache.jena.core'
+}
+
+javaModule {
+    name = javaModuleName
+    extraTestModules = ['java.management', 'java.sql']
+    hacks {
+        patches('org.hamcrest:hamcrest-core', 'org.mockito:mockito-all')
+        patches('org.hamcrest:hamcrest-library', 'org.mockito:mockito-all')
+    }
 }
 
 dependencies {
+    patch "org.hamcrest:hamcrest-core:$hamcrestLibraryVersion"
+    patch "org.hamcrest:hamcrest-library:$hamcrestLibraryVersion"
+    compile project(':jena.base')
     compile project(':jena.iri')
     compile("com.google.guava:guava:$guavaVersion")
-    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion")
+    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion"){
+        exclude group: 'xml-apis', module: 'xml-apis'
+    }
     compile("commons-cli:commons-cli:$commonsCliVersion")
     compile("commons-codec:commons-codec:$commonsCodecVersion")
-    compile project(':jena.base')
-
-    testCompile project(':jena.base')
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
 
     testCompile("org.xenei:junit-contracts:$junitContractsVersion") {
         exclude(module: 'commons-cli')
     }
     testCompile project(path: ':jena.base', configuration: 'testOutput')
     testCompile("org.mockito:mockito-all:$mockitoVersion")
-    testCompile("com.jayway.awaitility:awaitility:$awaitilityVersion")
+    testCompile("org.awaitility:awaitility:$awaitilityVersion")
 }
 
 task packageTests(type: Jar) {
@@ -46,15 +59,9 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Automatic-Module-Name', javaModuleName
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
-        instruction 'Require-Capability', '''\
-            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
-            osgi.serviceloader;
-                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
-                resolution:=mandatory; cardinality:=at_least_one
-            '''
+        instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
     appendix 'jpms'
 }

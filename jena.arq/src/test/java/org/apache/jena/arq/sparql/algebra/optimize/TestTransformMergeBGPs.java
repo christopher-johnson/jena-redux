@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.algebra.optimize;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.sparql.algebra.Op ;
 import org.apache.jena.arq.sparql.algebra.Transformer ;
 import org.apache.jena.arq.sparql.sse.SSE ;

@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.system;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.riot.* ;
 import org.junit.Test ;
 import org.junit.runner.RunWith ;

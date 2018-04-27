@@ -1,18 +1,31 @@
 apply plugin: 'osgi'
+apply plugin: 'com.zyxist.chainsaw'
 
 description = 'Apache Jena - Base Common Environment'
 
 ext {
-    moduleName = 'org.apache.jena.base'
+    javaModuleName = 'org.apache.jena.base'
+}
+
+javaModule {
+    name = javaModuleName
+    hacks {
+        patches('org.hamcrest:hamcrest-library', 'org.hamcrest:hamcrest-core')
+    }
 }
 
 dependencies {
+    patch "org.hamcrest:hamcrest-library:$hamcrestLibraryVersion"
+
     compile("com.google.guava:guava:$guavaVersion")
-    compile("org.apache.commons:commons-csv:$commonsCsvVersion")
-    compile("commons-io:commons-io:$commonsIoVersion")
-    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("com.github.andrewoma.dexx:collection:$dexxCollectionVersion")
-    testCompile("com.jayway.awaitility:awaitility:$awaitilityVersion")
+    compile("commons-io:commons-io:$commonsIoVersion")
+    compile("log4j:log4j:$log4jVersion")
+    compile("org.apache.commons:commons-csv:$commonsCsvVersion")
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+
+    testCompile("org.awaitility:awaitility:$awaitilityVersion")
 }
 
 task packageTests(type: Jar) {
@@ -37,15 +50,9 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Automatic-Module-Name', javaModuleName
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
-        instruction 'Require-Capability', '''\
-            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
-            osgi.serviceloader;
-                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
-                resolution:=mandatory; cardinality:=at_least_one
-            '''
+        instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
     appendix 'jpms'
 }

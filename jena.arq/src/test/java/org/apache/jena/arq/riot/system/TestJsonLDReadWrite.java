@@ -25,7 +25,7 @@ import java.io.ByteArrayOutputStream ;
 import java.util.Iterator ;
 import java.util.Map ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.DatasetFactory ;
 import org.apache.jena.core.rdf.model.Model ;

@@ -21,7 +21,7 @@ package org.apache.jena.base.atlas.lib.cache;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.IntStream.rangeClosed;
 
-import org.apache.jena.base.atlas.junit.BaseTest;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.Cache;
 import org.junit.Test;
 

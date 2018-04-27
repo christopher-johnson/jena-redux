@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.graph;
 import java.util.Iterator ;
 
 import org.apache.jena.base.atlas.iterator.Iter ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.Triple ;
 import org.apache.jena.arq.query.* ;

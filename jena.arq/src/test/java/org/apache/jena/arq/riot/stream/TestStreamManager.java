@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.stream;
 import java.io.File ;
 
 import org.apache.jena.base.atlas.io.IO ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.atlas.web.TypedInputStream ;
 import org.apache.jena.core.rdf.model.Model ;
 import org.apache.jena.core.rdf.model.ModelFactory ;

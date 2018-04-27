@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.jena.base.atlas.junit;
+package org.apache.jena.base.atlas;
 
 import java.io.PrintStream ;
 

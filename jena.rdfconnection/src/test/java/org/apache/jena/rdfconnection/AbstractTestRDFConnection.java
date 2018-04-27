@@ -21,7 +21,7 @@ package org.apache.jena.rdfconnection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.jena.base.atlas.iterator.Iter;
-import org.apache.jena.base.atlas.junit.BaseTest;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils;
 import org.apache.jena.arq.query.Dataset;
 import org.apache.jena.arq.query.DatasetFactory;

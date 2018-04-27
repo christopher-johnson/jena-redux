@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.expr;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.shared.PrefixMapping ;
 import org.apache.jena.arq.sparql.ARQConstants ;

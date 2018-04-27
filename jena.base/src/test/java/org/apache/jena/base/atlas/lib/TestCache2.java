@@ -20,7 +20,7 @@ package org.apache.jena.base.atlas.lib;
 
 import java.util.concurrent.Callable ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 // Non-parameterized tests

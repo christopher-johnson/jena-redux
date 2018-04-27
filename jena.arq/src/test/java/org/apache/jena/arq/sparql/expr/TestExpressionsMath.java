@@ -20,7 +20,7 @@ package org.apache.jena.arq.sparql.expr;
 
 import static org.apache.jena.arq.sparql.expr.LibTestExpr.* ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.sparql.ARQException ;
 import org.junit.Test ;
 

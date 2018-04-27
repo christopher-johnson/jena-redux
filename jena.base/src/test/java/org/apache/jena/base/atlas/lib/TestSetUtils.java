@@ -24,7 +24,7 @@ import java.util.HashSet ;
 import java.util.List ;
 import java.util.Set ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public class TestSetUtils extends BaseTest

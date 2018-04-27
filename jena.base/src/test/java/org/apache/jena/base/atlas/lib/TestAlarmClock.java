@@ -18,14 +18,14 @@
 
 package org.apache.jena.base.atlas.lib;
 
-import static com.jayway.awaitility.Awaitility.await ;
+import static org.awaitility.Awaitility.await ;
 import static org.apache.jena.base.atlas.lib.Lib.sleep ;
 
 import java.util.concurrent.TimeUnit ;
 import static java.util.concurrent.TimeUnit.* ;
 import java.util.concurrent.atomic.AtomicInteger ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public class TestAlarmClock extends BaseTest {

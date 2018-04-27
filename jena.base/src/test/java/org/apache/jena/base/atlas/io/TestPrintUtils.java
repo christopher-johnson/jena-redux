@@ -23,7 +23,7 @@ import java.io.IOException ;
 import java.io.OutputStreamWriter ;
 import java.io.Writer ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public class TestPrintUtils extends BaseTest

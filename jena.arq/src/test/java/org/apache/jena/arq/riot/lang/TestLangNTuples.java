@@ -24,7 +24,7 @@ import static org.apache.jena.arq.riot.system.ErrorHandlerFactory.setDefaultErro
 
 import java.io.ByteArrayInputStream ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.CharSpace ;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.riot.ErrorHandlerTestLib.ErrorHandlerEx;

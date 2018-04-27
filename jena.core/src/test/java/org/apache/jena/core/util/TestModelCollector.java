@@ -34,7 +34,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collector.Characteristics;
 import java.util.stream.Stream;
 
-import org.apache.jena.base.atlas.junit.BaseTest;
+import org.apache.jena.test.BaseTest;
 import org.apache.jena.core.datatypes.RDFDatatype;
 import org.apache.jena.core.datatypes.TypeMapper;
 import com.google.common.collect.ImmutableSet;

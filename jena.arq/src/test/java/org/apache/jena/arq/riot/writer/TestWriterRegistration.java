@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.riot.writer;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.riot.Lang ;
 import org.apache.jena.arq.riot.RDFFormat ;
 import org.apache.jena.arq.riot.RDFWriterRegistry ;

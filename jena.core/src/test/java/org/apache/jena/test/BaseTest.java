@@ -16,13 +16,13 @@
  * limitations under the License.
  */
 
-package org.apache.jena.base.atlas.junit;
+package org.apache.jena.test;
 
-import java.util.List ;
-import java.util.Locale ;
+import java.util.List;
+import java.util.Locale;
 
-import org.apache.jena.base.atlas.lib.ListUtils ;
-import org.junit.Assert ;
+import org.apache.jena.base.atlas.lib.ListUtils;
+import org.junit.Assert;
 
 public class BaseTest extends Assert {
     public static void assertEqualsIgnoreCase(String a, String b) {

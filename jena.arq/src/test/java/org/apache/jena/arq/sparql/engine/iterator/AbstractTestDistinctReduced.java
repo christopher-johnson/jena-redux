@@ -26,7 +26,7 @@ import java.util.Set ;
 import java.util.stream.Collectors ;
 
 import org.apache.jena.base.atlas.iterator.Iter ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.NodeFactory ;
 import org.apache.jena.arq.sparql.core.Var ;
 import org.apache.jena.arq.sparql.engine.QueryIterator ;

@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.solver;
 import static org.apache.jena.arq.sparql.solver.TestSolverLib.bgp ;
 import static org.apache.jena.arq.sparql.solver.TestSolverLib.matcher ;
 import static org.apache.jena.arq.sparql.solver.TestSolverLib.triple ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.graph.Triple ;
 import org.apache.jena.arq.sparql.core.BasicPattern ;
 import org.apache.jena.arq.sparql.engine.optimizer.StatsMatcher ;

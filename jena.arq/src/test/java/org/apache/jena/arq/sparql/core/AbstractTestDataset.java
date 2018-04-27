@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.core;
 import java.util.List;
 
 import org.apache.jena.base.atlas.iterator.Iter;
-import org.apache.jena.base.atlas.junit.BaseTest;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.query.Dataset;
 import org.apache.jena.core.rdf.model.Model;
 import org.apache.jena.core.rdf.model.ModelFactory;

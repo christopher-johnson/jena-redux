@@ -29,7 +29,7 @@ import java.util.ArrayList ;
 import java.util.Collection ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.query.ResultSet ;
 import org.apache.jena.arq.query.ResultSetFactory ;

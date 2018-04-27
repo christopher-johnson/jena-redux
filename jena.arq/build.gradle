@@ -1,22 +1,25 @@
 apply plugin: 'osgi'
+apply plugin: 'com.zyxist.chainsaw'
 
 description = 'Apache Jena - ARQ (SPARQL 1.1 Query Engine)'
 
 ext {
-    moduleName = 'org.apache.jena.arq'
+    javaModuleName = 'org.apache.jena.arq'
+}
+
+javaModule {
+    name = javaModuleName
 }
 
 dependencies {
     compile project(':jena.base')
     compile project(':jena.core')
+    compile project(':jena.iri')
     compile("com.google.guava:guava:$guavaVersion")
     compile("org.glassfish.main:javax.annotation:$javaxAnnotationVersion")
-    compile project(':jena.iri')
-
     compile("org.apache.httpcomponents:httpclient:$httpClientVersion") {
         exclude(module: 'commons-logging')
     }
-
     compile("com.github.jsonld-java:jsonld-java:$jsonLdVersion") {
         exclude(module: 'commons-logging')
         exclude(module: 'httpclient-cache')
@@ -25,23 +28,22 @@ dependencies {
         exclude(module: 'httpcore-osgi')
         exclude(module: 'slf4j-api')
     }
-
     compile("org.apache.httpcomponents:httpclient-cache:$httpClientVersion") {
         exclude(module: 'commons-logging')
     }
-
     compile("org.apache.thrift:libthrift:$libthriftVersion") {
         exclude(module: 'httpcore')
         exclude(module: 'commons-lang3')
     }
-
-    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion")
+    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion"){
+        exclude group: 'xml-apis', module: 'xml-apis'
+    }
     compile("org.slf4j:jcl-over-slf4j:$slf4jVersion")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
 
     testCompile project(path: ':jena.base', configuration: 'testOutput')
     testCompile project(path: ':jena.core', configuration: 'testOutput')
-    testCompile("com.jayway.awaitility:awaitility:$awaitilityVersion")
+    testCompile("org.awaitility:awaitility:$awaitilityVersion")
     testCompile("com.google.guava:guava:$guavaVersion")
 }
 
@@ -67,15 +69,9 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Automatic-Module-Name', moduleName
+        instruction 'Automatic-Module-Name', javaModuleName
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "$moduleName;version=$projectOsgiVersion"
-        instruction 'Require-Capability', '''\
-            osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
-            osgi.serviceloader;
-                filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
-                resolution:=mandatory; cardinality:=at_least_one
-            '''
+        instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
     appendix 'jpms'
 }

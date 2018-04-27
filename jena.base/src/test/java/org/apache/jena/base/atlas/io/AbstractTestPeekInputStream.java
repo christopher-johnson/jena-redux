@@ -18,7 +18,7 @@
 
 package org.apache.jena.base.atlas.io;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 
 public abstract class AbstractTestPeekInputStream extends BaseTest

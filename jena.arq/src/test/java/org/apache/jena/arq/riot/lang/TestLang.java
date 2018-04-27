@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.lang;
 import java.util.HashMap ;
 import java.util.Map ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.arq.riot.Lang ;
 import org.apache.jena.arq.riot.RDFLanguages ;
 import org.apache.jena.arq.riot.WebContent ;

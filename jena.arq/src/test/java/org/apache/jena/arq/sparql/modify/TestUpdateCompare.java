@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.modify;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.update.UpdateFactory ;
 import org.apache.jena.arq.update.UpdateRequest ;

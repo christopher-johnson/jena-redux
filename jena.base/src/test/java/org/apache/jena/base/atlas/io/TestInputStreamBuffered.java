@@ -22,7 +22,7 @@ import java.io.ByteArrayInputStream ;
 import java.io.IOException ;
 import java.io.InputStream ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.Bytes ;
 import org.junit.Test ;
 

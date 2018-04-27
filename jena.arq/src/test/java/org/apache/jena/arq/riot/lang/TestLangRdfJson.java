@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.lang;
 import java.io.ByteArrayInputStream ;
 import java.io.StringReader ;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.core.rdf.model.Model ;

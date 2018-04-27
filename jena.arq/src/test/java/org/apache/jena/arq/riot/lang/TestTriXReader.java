@@ -22,7 +22,7 @@ import java.io.InputStream ;
 import java.util.Arrays ;
 
 import org.apache.jena.base.atlas.io.IO ;
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.apache.jena.core.rdf.model.Model ;
 import org.apache.jena.arq.riot.RDFDataMgr ;
 import org.apache.jena.arq.riot.ReaderRIOT ;

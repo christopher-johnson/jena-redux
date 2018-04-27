@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.syntax.syntaxtransform;
 
-import org.apache.jena.base.atlas.junit.BaseTest ;
+import org.apache.jena.base.atlas.BaseTest;
 import org.junit.Test ;
 import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.QueryFactory ;
