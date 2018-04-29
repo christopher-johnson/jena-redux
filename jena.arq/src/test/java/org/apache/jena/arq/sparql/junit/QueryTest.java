@@ -18,6 +18,10 @@
 
 package org.apache.jena.arq.sparql.junit;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -68,9 +72,14 @@ import org.apache.jena.arq.sparql.vocabulary.ResultSetGraphVocab;
 import org.apache.jena.core.util.FileUtils;
 import org.apache.jena.core.util.junit.TestUtils;
 import org.apache.jena.core.vocabulary.RDF;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.TestInfo;
 
-public class QueryTest extends EarlTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class QueryTest extends EarlTestCase implements Test {
     private static int testCounter = 1 ;
     private int testNumber = testCounter++ ;
     private TestItem testItem ;
@@ -88,10 +97,9 @@ public class QueryTest extends EarlTestCase
     private boolean oldWarningFlag  ;
     private boolean oldPlainGraphFlag  ;
     
-    @Override
+    @Before
     public void setUpTest()
     {
-        super.setUpTest() ;
         // SPARQL and ARQ tests are done with no value matching (for query execution and results testing)
         oldPlainGraphFlag = SystemARQ.UsePlainGraph ;
         SystemARQ.UsePlainGraph = true ;
@@ -103,12 +111,11 @@ public class QueryTest extends EarlTestCase
         results =  testItem.getResults() ;
     }
     
-    @Override
+    @After
     public void tearDownTest()
     {
         SystemARQ.UsePlainGraph = oldPlainGraphFlag ;
         CheckerLiterals.WarnOnBadLiterals = oldWarningFlag ;
-        super.tearDownTest() ;
     }
     
     private Dataset setUpDataset(Query query, TestItem testItem)
@@ -176,7 +183,7 @@ public class QueryTest extends EarlTestCase
     }
     
     @Override
-    public void runTestForReal() throws Throwable
+    public void runTestForReal(TestInfo testInfo) throws Throwable
     {
         Query query = null ;
         try {
@@ -522,10 +529,10 @@ public class QueryTest extends EarlTestCase
     
     @Override
     public String toString()
-    { 
+    {
         if ( testItem.getName() != null )
             return testItem.getName() ;
-        return super.getName() ;
+        return null;
     }
 
     // Cache
@@ -559,5 +566,15 @@ public class QueryTest extends EarlTestCase
         //+" :: QueryFile="+testItem.getQueryFile()+
         //          ", DataFile="+tmp+", ResultsFile="+testItem.getResultFile() ;
         return d ;
+    }
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
     }
 }

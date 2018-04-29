@@ -19,8 +19,12 @@
 package org.apache.jena.arq.sparql.junit;
 
 
-public class SurpressedTest extends EarlTestCase
-{
+import org.junit.jupiter.api.TestInfo;
+
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class SurpressedTest extends EarlTestCase implements Test {
     public static boolean verbose = true ;
     String comment ;
     
@@ -31,15 +35,25 @@ public class SurpressedTest extends EarlTestCase
     }
 
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         super.notTested() ;
         if ( verbose )
         {
-            System.out.print("** Surpressed: "+getName()) ;
+            System.out.print("** Surpressed: " + testInfo.getDisplayName()) ;
             if ( comment != null )
                 System.out.print(" ("+comment+")") ;
             System.out.println() ;
         }
+    }
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
     }
 }

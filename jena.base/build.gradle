@@ -53,6 +53,7 @@ jar {
         instruction 'Automatic-Module-Name', javaModuleName
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
+
     }
     appendix 'jpms'
 }

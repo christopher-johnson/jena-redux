@@ -18,6 +18,9 @@
 
 package org.apache.jena.arq.riot.langsuite;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.apache.jena.core.rdf.model.Model ;
 import org.apache.jena.core.rdf.model.ModelFactory ;
 import org.apache.jena.arq.riot.Lang ;
@@ -28,9 +31,12 @@ import org.apache.jena.arq.sparql.core.DatasetGraph ;
 import org.apache.jena.arq.sparql.core.DatasetGraphFactory ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
 import org.apache.jena.arq.sparql.util.IsoMatcher ;
+import org.junit.jupiter.api.TestInfo;
 
-public class UnitTestEval extends LangTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class UnitTestEval extends LangTestCase implements Test {
     String input ;
     String output ;
     String baseIRI ;
@@ -54,7 +60,7 @@ public class UnitTestEval extends LangTestCase
     {}
 
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         // Could generalise run4() to cover both cases.
         // run3() predates dataset reading and is more tested. 
@@ -85,7 +91,7 @@ public class UnitTestEval extends LangTestCase
 
             if ( !b )
             {
-                System.out.println("**** Test: "+getName()) ;
+                System.out.println("**** Test: ") ;
                 System.out.println("---- Parsed");
                 RDFDataMgr.write(System.out, dsg, Lang.TRIG) ;
                 System.out.println("---- Expected");
@@ -149,5 +155,15 @@ public class UnitTestEval extends LangTestCase
         { 
             ex.printStackTrace(System.err) ;
             throw ex ; }
+    }
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
     }
 }

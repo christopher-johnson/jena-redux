@@ -19,6 +19,8 @@
 package org.apache.jena.arq.riot.langsuite;
 
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.DatasetFactory ;
 import org.apache.jena.core.rdf.model.Model ;
@@ -32,9 +34,12 @@ import org.apache.jena.core.shared.JenaException ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
 import org.junit.After ;
 import org.junit.Before ;
+import org.junit.jupiter.api.TestInfo;
 
-public class UnitTestBadEval extends LangTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class UnitTestBadEval extends LangTestCase implements Test {
     private final String input ;
     private final Lang lang ;
 
@@ -64,7 +69,7 @@ public class UnitTestBadEval extends LangTestCase
     
 
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;
@@ -101,4 +106,13 @@ public class UnitTestBadEval extends LangTestCase
             throw ex ; }
     }
 
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }

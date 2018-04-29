@@ -65,7 +65,7 @@ public class TestFactoryTDB extends TestFactoryManifest
         
         TestItem testItem = TestItem.create(entry, null) ;
         
-        TestCase test = null ;
+        Test test = null ;
         
         if ( testItem.getTestType() != null )
         {

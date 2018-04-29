@@ -18,11 +18,15 @@
 
 package org.apache.jena.arq.sparql.junit;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.apache.jena.arq.query.QueryException ;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
+import junit.framework.TestResult;
 
-public class SyntaxUpdateTest extends EarlTestCase
-{
+public class SyntaxUpdateTest extends EarlTestCase implements junit.framework.Test {
     static int count = 0 ;
     String updateString ;
     boolean expectLegalSyntax ;
@@ -48,14 +52,14 @@ public class SyntaxUpdateTest extends EarlTestCase
 
     private void setTest(String testName, String _queryString, boolean positiveTest)
     {
-        super.setName(testName) ;
+        //super.setName(testName) ;
         this.updateString = _queryString ;
         expectLegalSyntax = positiveTest ; 
     }
     
     
-    @Override
-    public void runTestForReal()
+    @Test
+    public void runTestForReal(TestInfo testInfo)
     {
         try {
             if ( updateString == null )
@@ -79,5 +83,13 @@ public class SyntaxUpdateTest extends EarlTestCase
     }
 
 
- 
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }

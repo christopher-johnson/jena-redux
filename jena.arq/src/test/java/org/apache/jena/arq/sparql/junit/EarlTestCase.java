@@ -18,6 +18,8 @@
 
 package org.apache.jena.arq.sparql.junit;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import junit.framework.AssertionFailedError ;
 import junit.framework.TestCase ;
 import org.apache.jena.arq.query.Query ;
@@ -26,17 +28,19 @@ import org.apache.jena.arq.query.Syntax ;
 import org.apache.jena.arq.sparql.ARQException ;
 import org.apache.jena.arq.update.UpdateFactory ;
 import org.apache.jena.arq.update.UpdateRequest ;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.TestInfo;
 
 
-public abstract class EarlTestCase extends TestCase
+public abstract class EarlTestCase
 {
-    public EarlReport report = null ;
-    public String testURI = null ;
+    public EarlReport report;
+    public String testURI;
     private boolean resultRecorded = false ;
 
     public EarlTestCase(String name, String testURI, EarlReport earl)
     {
-        super(name) ;
         this.report = earl ;
         this.testURI = testURI ;
     }
@@ -81,11 +85,11 @@ public abstract class EarlTestCase extends TestCase
         return request ;
     }
 
-    @Override
-    final public void runTest() throws Throwable
+    @Before
+    final public void runTest(TestInfo testInfo) throws Throwable
     {
         try {
-            runTestForReal() ;
+            runTestForReal(testInfo) ;
             if ( ! resultRecorded )
                 success() ;
         } catch (AssertionFailedError ex)
@@ -96,22 +100,18 @@ public abstract class EarlTestCase extends TestCase
         }
     }
 
-    public abstract void runTestForReal() throws Throwable ;
+    public abstract void runTestForReal(TestInfo testInfo) throws Throwable ;
 
     // Increase visibility.
-    @Override
+    @Before
     public void setUp() {
-        setUpTest() ;
+
     }
 
-    @Override
+    @After
     public void tearDown() {
-        tearDownTest() ;
-    }
 
-    // Decouple from JUnit3.
-    public void setUpTest() {}
-    public void tearDownTest() {}
+    }
 
     public void success()
     {
@@ -144,7 +144,7 @@ public abstract class EarlTestCase extends TestCase
     private void note()
     {
         if ( resultRecorded )
-            throw new ARQException("Duplictaed test results: "+getName()) ;
+            throw new ARQException("Duplicated test results: ") ;
         resultRecorded = true ;
     }
 

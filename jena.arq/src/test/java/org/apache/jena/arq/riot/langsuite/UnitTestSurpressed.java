@@ -19,14 +19,17 @@
 package org.apache.jena.arq.riot.langsuite;
 
 import org.apache.jena.arq.sparql.junit.EarlReport ;
+import org.junit.jupiter.api.TestInfo;
 
-public class UnitTestSurpressed extends LangTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class UnitTestSurpressed extends LangTestCase implements Test {
     public UnitTestSurpressed(String name, String testURI, EarlReport earl)
     { super(name, testURI, earl) ; }
     
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     { }
 
     @Override
@@ -36,5 +39,15 @@ public class UnitTestSurpressed extends LangTestCase
     @Override
     public void _tearDown()
     {}
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }
 

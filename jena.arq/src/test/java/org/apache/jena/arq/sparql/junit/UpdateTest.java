@@ -18,6 +18,8 @@
 
 package org.apache.jena.arq.sparql.junit;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList ;
 import java.util.List ;
 
@@ -40,10 +42,15 @@ import org.apache.jena.core.util.FileManager ;
 import org.apache.jena.core.util.iterator.ClosableIterator ;
 import org.apache.jena.core.util.junit.TestUtils ;
 import org.apache.jena.core.vocabulary.RDFS ;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.TestInfo;
+
+import junit.framework.Test;
+import junit.framework.TestResult;
 
 
-public class UpdateTest extends EarlTestCase
-{
+public class UpdateTest extends EarlTestCase implements Test {
     private Resource action ;
     private Resource result ;
     
@@ -80,18 +87,17 @@ public class UpdateTest extends EarlTestCase
     }
     
     private boolean oldWarningFlag  ;
-    @Override
+    @Before
     public void setUpTest()
     {
-        super.setUpTest() ;
-        // Turn parser warnings off for the test data. 
+        // Turn parser warnings off for the test data.
         oldWarningFlag = CheckerLiterals.WarnOnBadLiterals ;
         //CheckerLiterals.WarnOnBadLiterals = false ;
         input = getDataset(action) ;
         output = getDataset(result) ;
     }
     
-    @Override
+    @After
     public void tearDownTest()
     {
 //        if ( resetNeeded )
@@ -99,11 +105,10 @@ public class UpdateTest extends EarlTestCase
         CheckerLiterals.WarnOnBadLiterals = oldWarningFlag ;
         input = null ;
         output = null ;
-        super.tearDownTest() ;
     }
     
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         try {
             UpdateRequest request = UpdateFactory.read(updateFile, Syntax.syntaxSPARQL_11) ;
@@ -111,7 +116,7 @@ public class UpdateTest extends EarlTestCase
             boolean b = datasetSame(input, output, false) ;
             if ( ! b )
             {
-                System.out.println("---- "+getName()) ;
+                System.out.println("---- ") ;
                 System.out.println("---- Got: ") ;
                 System.out.println(input.asDatasetGraph()) ;
                 System.out.println("---- Expected") ;
@@ -216,6 +221,15 @@ public class UpdateTest extends EarlTestCase
         cIter.close() ;
         return l ;
     }
-    
-    
+
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }

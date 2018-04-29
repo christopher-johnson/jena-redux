@@ -79,7 +79,7 @@ public class ScriptTestSuiteFactory extends TestFactoryManifest
         
         TestItem item = TestItem.create(entry, TestManifest.QueryEvaluationTest) ;
         Resource testType = item.getTestType() ;
-        TestCase test = null ;
+        QueryTest test = null ;
 
         // Frankly this all needs rewriting.
         // Drop the idea of testItem.  pass entry/action/result to subclass.

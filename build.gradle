@@ -82,9 +82,12 @@ allprojects { subproj ->
 
     dependencies {
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-        testImplementation("org.apiguardian:apiguardian-api:$apiguardianVersion")
+        testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+        testImplementation("junit:junit:4.12")
         testRuntime("org.junit.vintage:junit-vintage-engine:${junitVersion}")
-        testCompile("junit:junit:4.12")
+        compile("org.slf4j:slf4j-api:$slf4jVersion")
+        compile("org.slf4j:slf4j-log4j12:$slf4jVersion")
+        compile("log4j:log4j:$log4jVersion")
         testCompile("org.hamcrest:hamcrest-core:$hamcrestLibraryVersion")
     }
 }

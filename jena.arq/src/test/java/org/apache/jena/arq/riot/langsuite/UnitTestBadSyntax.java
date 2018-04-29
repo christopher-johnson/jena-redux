@@ -19,6 +19,8 @@
 package org.apache.jena.arq.riot.langsuite;
 
 import static org.apache.jena.arq.riot.SysRIOT.fmtMessage ;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.apache.jena.arq.atlas.legacy.BaseTest2 ;
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.DatasetFactory ;
@@ -31,9 +33,12 @@ import org.apache.jena.arq.riot.RiotException ;
 import org.apache.jena.arq.riot.system.ErrorHandler ;
 import org.apache.jena.arq.riot.system.ErrorHandlerFactory ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
+import org.junit.jupiter.api.TestInfo;
 
-public class UnitTestBadSyntax extends LangTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class UnitTestBadSyntax extends LangTestCase implements Test {
     private final String uri ;
     private final Lang lang ;
 
@@ -75,7 +80,7 @@ public class UnitTestBadSyntax extends LangTestCase
     public void _tearDown()      { BaseTest2.unsetTestLogging() ; }
 
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;
@@ -105,5 +110,15 @@ public class UnitTestBadSyntax extends LangTestCase
             fail("Unexpected exception") ;
         }
         fail("Bad syntax test succeed in parsing the file") ;
+    }
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
     }
 }

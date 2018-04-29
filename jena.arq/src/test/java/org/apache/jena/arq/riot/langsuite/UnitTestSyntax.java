@@ -26,9 +26,12 @@ import org.apache.jena.arq.riot.Lang ;
 import org.apache.jena.arq.riot.RDFDataMgr ;
 import org.apache.jena.arq.riot.RDFLanguages ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
+import org.junit.jupiter.api.TestInfo;
 
-public class UnitTestSyntax extends LangTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class UnitTestSyntax extends LangTestCase implements Test {
     private final String uri ;
     private final Lang lang ;
 
@@ -40,7 +43,7 @@ public class UnitTestSyntax extends LangTestCase
     }
     
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;
@@ -66,4 +69,13 @@ public class UnitTestSyntax extends LangTestCase
     public void _tearDown()
     {}
 
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }

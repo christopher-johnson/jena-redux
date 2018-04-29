@@ -18,6 +18,8 @@
 
 package org.apache.jena.dboe.tdb2.junit;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.List ;
 
 import org.apache.jena.arq.system.Txn;
@@ -34,10 +36,18 @@ import org.apache.jena.arq.sparql.resultset.ResultSetCompare ;
 import org.apache.jena.arq.sparql.resultset.SPARQLResult ;
 import org.apache.jena.dboe.tdb2.TDB2Factory;
 import org.apache.jena.core.util.FileManager ;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.slf4j.Logger ;
 import org.slf4j.LoggerFactory ;
 
-public class QueryTestTDB extends EarlTestCase
+import junit.framework.TestResult;
+
+@DisplayName("QueryTestTDB")
+public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
 {
     // Changed to using in-memory graphs/datasets because this is testing the query
     // processing.  Physical graph/datsets is in package "store". 
@@ -56,7 +66,7 @@ public class QueryTestTDB extends EarlTestCase
     private static List<String> currentDefaultGraphs = null ;
     private static List<String> currentNamedGraphs = null ;
 
-    // Old style (Junit3)
+
     public QueryTestTDB(String testName, EarlReport report, TestItem item)
     {
         this(testName, report, item.getURI(), 
@@ -82,7 +92,8 @@ public class QueryTestTDB extends EarlTestCase
     
     boolean oldValueUsePlainGraph = SystemARQ.UsePlainGraph ;
     
-    @Override public void setUpTest() {
+    @Before
+    public void setUpTest() {
         dataset = TDB2Factory.createDataset() ;
         Txn.executeWrite(dataset, ()->{
             setupData() ;
@@ -92,7 +103,8 @@ public class QueryTestTDB extends EarlTestCase
         SystemARQ.UsePlainGraph = true ;
     }
     
-    @Override public void tearDownTest()
+    @After
+    public void tearDownTest()
     { 
         if ( dataset != null )
         {
@@ -119,14 +131,13 @@ public class QueryTestTDB extends EarlTestCase
         for ( String fn : namedGraphURIs )
             load(dataset.getNamedModel(fn), fn) ;
     }
-    
-    
+
     @Override
-    public void runTestForReal() throws Throwable
+    public void runTestForReal(TestInfo testInfo) throws Throwable
     {
         if ( skipThisTest )
         {
-            log.info(this.getName()+" : Skipped") ;
+            log.info(" : Skipped") ;
             return ;
         }
         
@@ -167,7 +178,7 @@ public class QueryTestTDB extends EarlTestCase
                 {
                     rs1.reset() ;
                     rs2.reset() ;
-                    System.out.println("------------------- "+this.getName());
+                    System.out.println("------------------- "+testInfo.getDisplayName());
                     System.out.printf("**** Expected (%s)", expectedLabel) ;
                     ResultSetFormatter.out(System.out, rs1) ; 
                     System.out.println("**** Got (TDB)") ;
@@ -189,5 +200,15 @@ public class QueryTestTDB extends EarlTestCase
         if ( list1 == null )
             return ( list2 == null ) ;
         return list1.equals(list2) ;
+    }
+
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
     }
 }

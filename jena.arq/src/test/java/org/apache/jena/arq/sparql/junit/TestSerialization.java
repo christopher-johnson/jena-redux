@@ -24,9 +24,12 @@ import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.Syntax ;
 import org.apache.jena.arq.sparql.sse.SSEParseException ;
 import org.apache.jena.arq.sparql.util.QueryUtils ;
+import org.junit.jupiter.api.TestInfo;
 
-public class TestSerialization extends EarlTestCase
-{
+import junit.framework.Test;
+import junit.framework.TestResult;
+
+public class TestSerialization extends EarlTestCase implements Test {
     static int count = 0 ;
     String queryString ;
     TestItem testItem ;
@@ -50,7 +53,6 @@ public class TestSerialization extends EarlTestCase
 
     private void setTest(String testName, EarlReport earl, String _queryString)
     {
-        super.setName(testName) ;
         this.queryString = _queryString ;
     }
     
@@ -61,7 +63,7 @@ public class TestSerialization extends EarlTestCase
     //   Are they equal?
     
     @Override
-    public void runTestForReal()
+    public void runTestForReal(TestInfo testInfo)
     {
         Query query = null ;
         if ( queryString == null )
@@ -70,10 +72,10 @@ public class TestSerialization extends EarlTestCase
             query = queryFromString(queryString) ;
         
         // Whatever was read in.
-        runTestWorker(query, query.getSyntax()) ;
+        runTestWorker(query, query.getSyntax(), testInfo) ;
     }
     
-    protected void runTestWorker(Query query, Syntax syntax)
+    protected void runTestWorker(Query query, Syntax syntax, TestInfo testInfo)
     {
         IndentedLineBuffer buff = new IndentedLineBuffer() ;
         query.serialize(buff, syntax) ;
@@ -90,7 +92,7 @@ public class TestSerialization extends EarlTestCase
         } 
         catch (RuntimeException ex)
         {
-            System.err.println("**** Test: "+getName()) ;
+            System.err.println("**** Test: " + testInfo.getDisplayName()) ;
             System.err.println("** "+ex.getMessage()) ;
             System.err.println(query) ;
             throw ex ; 
@@ -100,9 +102,18 @@ public class TestSerialization extends EarlTestCase
             QueryUtils.checkOp(query, true) ;
         } catch (SSEParseException ex)
         {
-            System.err.println("**** Test: "+getName()) ; 
+            System.err.println("**** Test: ") ;
             System.err.println("** Algebra error: "+ex.getMessage()) ;
         }
     }
 
+    @Override
+    public int countTestCases() {
+        return 0;
+    }
+
+    @Override
+    public void run(TestResult result) {
+
+    }
 }
