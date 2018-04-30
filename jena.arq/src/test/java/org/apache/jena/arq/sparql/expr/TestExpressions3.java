@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.expr;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.sparql.engine.binding.Binding ;
 import org.apache.jena.arq.sparql.expr.nodevalue.XSDFuncOp ;
 import org.apache.jena.arq.sparql.function.FunctionEnvBase ;

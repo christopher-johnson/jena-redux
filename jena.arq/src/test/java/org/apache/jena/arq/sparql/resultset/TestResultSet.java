@@ -25,7 +25,7 @@ import java.util.ArrayList ;
 import java.util.List ;
 import java.util.NoSuchElementException;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.NodeFactory ;

@@ -23,7 +23,7 @@ import java.io.IOException ;
 import java.io.StringReader ;
 import java.nio.file.Paths ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.IRILib ;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.atlas.web.TypedInputStream ;

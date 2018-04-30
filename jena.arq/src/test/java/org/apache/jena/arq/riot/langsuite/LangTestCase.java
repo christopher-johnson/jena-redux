@@ -28,8 +28,8 @@ import org.junit.Before;
 
 public abstract class LangTestCase extends EarlTestCase
 {
-    public LangTestCase(String name, String testURI, EarlReport earl)
-    { super(name, testURI, earl) ; }
+    public LangTestCase()
+    {  }
 
     public abstract void _setUp() ;
     public abstract void _tearDown() ;

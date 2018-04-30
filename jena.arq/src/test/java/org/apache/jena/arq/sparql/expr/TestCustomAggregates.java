@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.expr;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.base.atlas.logging.LogCtl ;
 import org.apache.jena.core.graph.Graph ;

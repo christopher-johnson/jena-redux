@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.engine.http;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.riot.WebContent ;
 import org.junit.Test ;
 

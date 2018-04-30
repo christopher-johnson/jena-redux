@@ -20,7 +20,7 @@ package org.apache.jena.arq.sparql.util;
 
 import static org.apache.jena.arq.sparql.core.DatasetGraphFactory.createTxnMem;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node;
 import org.apache.jena.core.graph.NodeFactory;
 import org.apache.jena.arq.query.ReadWrite;

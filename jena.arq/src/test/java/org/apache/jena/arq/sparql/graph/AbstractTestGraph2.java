@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.graph;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.Triple ;

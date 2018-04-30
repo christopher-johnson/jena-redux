@@ -23,7 +23,7 @@ import java.io.ByteArrayOutputStream ;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.atlas.legacy.BaseTest2 ;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.NodeFactory ;

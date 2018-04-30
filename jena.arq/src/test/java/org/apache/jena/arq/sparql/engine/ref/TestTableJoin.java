@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.engine.ref;
 import java.util.HashSet ;
 import java.util.Set ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.query.ARQ ;
 import org.apache.jena.arq.query.ResultSet ;
 import org.apache.jena.arq.query.ResultSetFactory ;

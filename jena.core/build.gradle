@@ -10,15 +10,9 @@ ext {
 javaModule {
     name = javaModuleName
     extraTestModules = ['java.management', 'java.sql']
-    hacks {
-        patches('org.hamcrest:hamcrest-core', 'org.mockito:mockito-all')
-        patches('org.hamcrest:hamcrest-library', 'org.mockito:mockito-all')
-    }
 }
 
 dependencies {
-    patch "org.hamcrest:hamcrest-core:$hamcrestLibraryVersion"
-    patch "org.hamcrest:hamcrest-library:$hamcrestLibraryVersion"
     compile project(':jena.base')
     compile project(':jena.iri')
     compile("com.google.guava:guava:$guavaVersion")
@@ -31,10 +25,15 @@ dependencies {
 
     testCompile("org.xenei:junit-contracts:$junitContractsVersion") {
         exclude(module: 'commons-cli')
+        exclude(module: 'hamcrest-core')
     }
     testCompile project(path: ':jena.base', configuration: 'testOutput')
     testCompile("org.mockito:mockito-all:$mockitoVersion")
-    testCompile("org.awaitility:awaitility:$awaitilityVersion")
+    testCompile("org.awaitility:awaitility:$awaitilityVersion") {
+        exclude(module: 'hamcrest-core')
+        exclude(module: 'hamcrest-library')
+    }
+    testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
 }
 
 task packageTests(type: Jar) {

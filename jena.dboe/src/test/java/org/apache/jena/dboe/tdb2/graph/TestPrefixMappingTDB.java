@@ -18,15 +18,10 @@
 
 package org.apache.jena.dboe.tdb2.graph;
 
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
-import static org.junit.Assert.assertEquals;
-
 import org.apache.jena.base.atlas.lib.FileOps ;
 import org.apache.jena.dboe.base.file.Location;
 import org.apache.jena.core.shared.PrefixMapping ;
 import org.apache.jena.arq.sparql.core.DatasetPrefixStorage ;
-import org.apache.jena.arq.sparql.graph.AbstractTestPrefixMapping2 ;
 import org.apache.jena.dboe.tdb2.ConfigTest;
 import org.apache.jena.dboe.tdb2.junit.BuildTestLib;
 import org.apache.jena.dboe.tdb2.sys.TDBInternal;

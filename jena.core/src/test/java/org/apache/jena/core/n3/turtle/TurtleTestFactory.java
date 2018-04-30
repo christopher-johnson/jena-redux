@@ -21,8 +21,8 @@ package org.apache.jena.core.n3.turtle;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.apache.jena.core.rdf.model.Resource ;
-import org.apache.jena.core.util.junit.TestFactoryManifest ;
-import org.apache.jena.core.util.junit.TestUtils ;
+import org.apache.jena.core.util.TestFactoryManifest;
+import org.apache.jena.core.util.TestUtils;
 import org.apache.jena.core.vocabulary.RDF ;
 
 

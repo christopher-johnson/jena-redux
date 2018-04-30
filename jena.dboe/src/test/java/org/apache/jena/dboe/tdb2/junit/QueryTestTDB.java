@@ -29,11 +29,11 @@ import org.apache.jena.arq.sparql.SystemARQ ;
 import org.apache.jena.arq.sparql.engine.QueryEngineFactory ;
 import org.apache.jena.arq.sparql.engine.QueryExecutionBase ;
 import org.apache.jena.arq.sparql.engine.ref.QueryEngineRef ;
-import org.apache.jena.arq.sparql.junit.EarlReport ;
-import org.apache.jena.arq.sparql.junit.EarlTestCase ;
-import org.apache.jena.arq.sparql.junit.TestItem ;
+import org.apache.jena.dboe.EarlTestCase ;
+import org.apache.jena.dboe.TestItem ;
 import org.apache.jena.arq.sparql.resultset.ResultSetCompare ;
 import org.apache.jena.arq.sparql.resultset.SPARQLResult ;
+import org.apache.jena.dboe.EarlReport;
 import org.apache.jena.dboe.tdb2.TDB2Factory;
 import org.apache.jena.core.util.FileManager ;
 import org.junit.After;
@@ -41,12 +41,12 @@ import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 import org.slf4j.Logger ;
 import org.slf4j.LoggerFactory ;
 
 import junit.framework.TestResult;
 
-@DisplayName("QueryTestTDB")
 public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
 {
     // Changed to using in-memory graphs/datasets because this is testing the query
@@ -59,7 +59,7 @@ public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
 
     final List<String> defaultGraphURIs ;
     final List<String> namedGraphURIs ;
-    final String queryFile ; 
+    final String queryFile ;
     final SPARQLResult results ;
     
     // Track what's currently loaded in the GraphLocation
@@ -67,15 +67,19 @@ public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
     private static List<String> currentNamedGraphs = null ;
 
 
-    public QueryTestTDB(String testName, EarlReport report, TestItem item)
+    public QueryTestTDB(TestItem item)
     {
-        this(testName, report, item.getURI(), 
-             item.getDefaultGraphURIs(), item.getNamedGraphURIs(), 
-             item.getResults(), item.getQueryFile()
-             ) ;
+        //this(testName, report, item.getURI(),
+        //     item.getDefaultGraphURIs(), item.getNamedGraphURIs(),
+        //     item.getResults(), item.getQueryFile()
+        //     ) ;
+        defaultGraphURIs = null;
+        namedGraphURIs = null;
+        queryFile = null;
+        results = null;
     }
     
-    public QueryTestTDB(String testName, EarlReport report, 
+    public QueryTestTDB(String testName, EarlReport report,
                         String uri,
                         List<String> dftGraphs,
                         List<String> namedGraphs,
@@ -83,7 +87,6 @@ public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
                         String queryFile
                         )
     {
-        super(testName, uri, report) ;
         this.defaultGraphURIs = dftGraphs ;
         this.namedGraphURIs = namedGraphs ;
         this.queryFile = queryFile ;
@@ -132,8 +135,9 @@ public class QueryTestTDB extends EarlTestCase implements junit.framework.Test
             load(dataset.getNamedModel(fn), fn) ;
     }
 
-    @Override
-    public void runTestForReal(TestInfo testInfo) throws Throwable
+    @DisplayName("QueryTestTDB")
+    @Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter) throws Throwable
     {
         if ( skipThisTest )
         {

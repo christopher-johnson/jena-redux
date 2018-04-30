@@ -20,7 +20,7 @@ package org.apache.jena.arq.riot.thrift;
 
 import static org.apache.jena.arq.riot.RDFLanguages.THRIFT ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.riot.* ;
 import org.junit.Test ;
 

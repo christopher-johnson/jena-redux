@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.lang;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.QueryException ;
 import org.apache.jena.arq.query.QueryFactory ;

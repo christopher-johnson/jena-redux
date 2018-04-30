@@ -23,35 +23,26 @@ package org.apache.jena.arq.sparql.junit;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.apache.jena.arq.query.QueryException ;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import junit.framework.TestResult;
 
+@Disabled
 @DisplayName("SyntaxTest")
+@ExtendWith(TestItemParameterResolver.class)
 public class SyntaxTest extends EarlTestCase implements junit.framework.Test {
     static int count = 0 ;
     String queryString ;
     boolean expectLegalSyntax ;
     TestItem testItem ;
-    
-    public SyntaxTest(String testName, EarlReport earl, TestItem t)
-    {
-        this(testName, earl, t, true) ;
-    }
 
-    public SyntaxTest(String testName, EarlReport earl, TestItem t, boolean positiveTest)
-    {
-        super(testName, t.getURI(), earl) ;
-        testItem = t ;
-        expectLegalSyntax = positiveTest ; 
-    }
-
-    public SyntaxTest(String testName, EarlReport earl, String queryString,  boolean positiveTest)
-    {
-        super(testName, TestItem.fakeURI(), earl) ;
-        setTest(testName, queryString, positiveTest) ;
+    public SyntaxTest(TestItem item) {
+        this.testItem = item;
     }
 
     private void setTest(String testName, String _queryString, boolean positiveTest)
@@ -60,10 +51,10 @@ public class SyntaxTest extends EarlTestCase implements junit.framework.Test {
         this.queryString = _queryString ;
         expectLegalSyntax = positiveTest ; 
     }
-    
-    
+
+
     @Test
-    public void runTestForReal(TestInfo testInfo)
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         try {
             if ( queryString == null )

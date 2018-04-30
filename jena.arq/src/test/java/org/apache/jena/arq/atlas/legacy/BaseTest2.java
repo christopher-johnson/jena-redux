@@ -21,7 +21,7 @@ package org.apache.jena.arq.atlas.legacy;
 import java.util.ArrayDeque ;
 import java.util.Deque ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.logging.Log ;
 import org.apache.jena.arq.riot.system.ErrorHandler ;
 import org.apache.jena.arq.riot.system.ErrorHandlerFactory ;

@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.riot.system;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.junit.Test ;
 
 /**

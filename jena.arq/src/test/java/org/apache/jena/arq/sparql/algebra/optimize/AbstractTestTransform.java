@@ -20,7 +20,7 @@ package org.apache.jena.arq.sparql.algebra.optimize ;
 
 import java.util.Objects ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.QueryFactory ;

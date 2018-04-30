@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.api;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.query.* ;
 import org.apache.jena.core.rdf.model.Model ;
 import org.apache.jena.core.rdf.model.Property ;

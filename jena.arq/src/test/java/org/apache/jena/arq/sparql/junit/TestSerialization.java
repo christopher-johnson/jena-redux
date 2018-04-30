@@ -24,20 +24,23 @@ import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.Syntax ;
 import org.apache.jena.arq.sparql.sse.SSEParseException ;
 import org.apache.jena.arq.sparql.util.QueryUtils ;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import junit.framework.Test;
 import junit.framework.TestResult;
 
-public class TestSerialization extends EarlTestCase implements Test {
+@DisplayName("TestSerialization")
+@ExtendWith(TestItemParameterResolver.class)
+public class TestSerialization extends EarlTestCase implements junit.framework.Test{
     static int count = 0 ;
     String queryString ;
     TestItem testItem ;
     
-    public TestSerialization(String testName, EarlReport earl, TestItem t)
+    public TestSerialization(TestItem item)
     {
-        super(testName, t.getURI(), earl) ;
-        testItem = t ;
+        this.testItem = item;
     }
 
 //    public SerializerTest(String queryString)
@@ -61,9 +64,10 @@ public class TestSerialization extends EarlTestCase implements Test {
     //   Serialize to string.
     //   Parse again.
     //   Are they equal?
-    
-    @Override
-    public void runTestForReal(TestInfo testInfo)
+
+
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         Query query = null ;
         if ( queryString == null )

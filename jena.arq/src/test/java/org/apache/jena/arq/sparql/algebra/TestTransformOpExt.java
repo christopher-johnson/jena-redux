@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.algebra;
 import java.util.Set;
 
 import org.apache.jena.base.atlas.io.IndentedWriter ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.sparql.algebra.op.OpExt ;
 import org.apache.jena.arq.sparql.algebra.op.OpFilter;

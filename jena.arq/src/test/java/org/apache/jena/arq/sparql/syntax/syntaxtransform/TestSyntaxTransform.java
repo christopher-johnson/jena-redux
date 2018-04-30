@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.syntax.syntaxtransform;
 import java.util.HashMap ;
 import java.util.Map ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.QueryFactory ;

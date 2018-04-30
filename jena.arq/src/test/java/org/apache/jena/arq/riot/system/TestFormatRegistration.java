@@ -22,7 +22,7 @@ package org.apache.jena.arq.riot.system;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.riot.* ;
 import org.junit.Test ;
 // Test system integration / registration

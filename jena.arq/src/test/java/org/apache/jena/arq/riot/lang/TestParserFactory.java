@@ -22,7 +22,7 @@ import java.io.StringReader ;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.Pair ;
 import org.apache.jena.core.graph.Triple ;
 import org.apache.jena.arq.riot.Lang ;

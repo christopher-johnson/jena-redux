@@ -22,7 +22,7 @@ import static org.apache.jena.base.atlas.lib.Lib.sleep ;
 
 import java.util.concurrent.TimeUnit ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.Sys ;
 import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.arq.query.* ;

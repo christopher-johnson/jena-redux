@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.riot.lang;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Triple ;
 import org.apache.jena.arq.riot.ErrorHandlerTestLib ;
 import org.apache.jena.arq.riot.ErrorHandlerTestLib.ExFatal ;

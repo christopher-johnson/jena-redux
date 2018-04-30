@@ -22,7 +22,6 @@ import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.ReadWrite ;
-import org.apache.jena.arq.sparql.graph.AbstractTestGraph2 ;
 import org.apache.jena.arq.sparql.util.NodeFactoryExtra ;
 import org.apache.jena.dboe.tdb2.junit.TL;
 import org.junit.After ;

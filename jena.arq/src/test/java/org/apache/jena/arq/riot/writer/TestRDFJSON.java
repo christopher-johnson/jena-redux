@@ -23,7 +23,7 @@ import java.io.ByteArrayOutputStream ;
 
 import org.apache.jena.arq.atlas.json.JSON ;
 import org.apache.jena.arq.atlas.json.JsonObject ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.core.graph.Graph ;
 import org.apache.jena.core.graph.Node ;

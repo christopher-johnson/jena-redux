@@ -18,8 +18,6 @@
 
 package org.apache.jena.dboe.tdb2.junit;
 
-import org.apache.jena.core.graph.test.AbstractTestGraph ;
-
 public abstract class AbstractTestGraphTDB extends AbstractTestGraph
 {
     public AbstractTestGraphTDB(String name)

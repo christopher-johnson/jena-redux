@@ -25,7 +25,7 @@ import static org.apache.jena.arq.sparql.core.QuadAction.NO_DELETE ;
 
 import java.util.List ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.Pair ;
 import org.apache.jena.arq.sparql.sse.SSE ;
 import org.junit.Test ;

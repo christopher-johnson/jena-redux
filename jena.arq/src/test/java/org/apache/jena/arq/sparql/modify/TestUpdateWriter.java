@@ -19,7 +19,7 @@
 package org.apache.jena.arq.sparql.modify;
 
 import org.apache.jena.base.atlas.io.IndentedLineBuffer ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.sparql.modify.request.UpdateWriter ;
 import org.apache.jena.arq.update.UpdateFactory ;
 import org.apache.jena.arq.update.UpdateRequest ;

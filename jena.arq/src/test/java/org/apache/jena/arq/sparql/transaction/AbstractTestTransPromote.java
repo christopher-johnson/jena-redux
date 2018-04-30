@@ -35,8 +35,6 @@ import org.apache.jena.arq.sparql.sse.SSE ;
 import org.apache.jena.arq.system.ThreadAction ;
 import org.apache.jena.arq.system.ThreadTxn ;
 import org.apache.jena.arq.system.Txn ;
-import org.apache.log4j.Level ;
-import org.apache.log4j.Logger ;
 import org.junit.After ;
 import org.junit.Before ;
 import org.junit.Test ;
@@ -51,27 +49,25 @@ public abstract class AbstractTestTransPromote {
     // See before() / after().
 
     // Loggers.
-    private final Logger[] loggers ;
-    private Level[] levels ;
     private boolean stdPromotion ;
     private boolean stdReadCommitted ;
     
     @Before
     public void beforeLoggersNoWarnings() {
-        int N = loggers.length ;
-        levels = new Level[N] ;
-        for ( int i = 0 ; i < N ; i++ ) {
-            levels[i] = loggers[i].getLevel() ;
-            loggers[i].setLevel(Level.ERROR) ;
-        }
+       // int N = loggers.length ;
+        //levels = new Level[N] ;
+        //for ( int i = 0 ; i < N ; i++ ) {
+         //   levels[i] = loggers[i].getLevel() ;
+          //  loggers[i].setLevel(Level.ERROR) ;
+        //}
     }
 
     @After
     public void afterResetLoggers() {
-        int N = loggers.length ;
-        for ( int i = 0 ; i < N ; i++ ) {
-            loggers[i].setLevel(levels[i]) ;
-        }
+        //int N = loggers.length ;
+        //for ( int i = 0 ; i < N ; i++ ) {
+        //    loggers[i].setLevel(levels[i]) ;
+        //}
     }
 
     // The exact class used by exceptions of the system under test.
@@ -79,9 +75,9 @@ public abstract class AbstractTestTransPromote {
     // so can't be JenaTransactionException.
     protected abstract Class<? extends Exception> getTransactionExceptionClass() ;
     
-    protected AbstractTestTransPromote(Logger[] loggers) {
-        this.loggers = loggers ;
-    }
+   // protected AbstractTestTransPromote(Logger[] loggers) {
+   //     this.loggers = loggers ;
+    //}
     
     protected final static Quad q1 = SSE.parseQuad("(_ :s :p1 1)") ;
     protected final static Quad q2 = SSE.parseQuad("(_ :s :p2 2)") ;

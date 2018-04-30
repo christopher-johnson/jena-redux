@@ -19,7 +19,6 @@
 package org.apache.jena.dboe.tdb2.graph;
 
 import org.apache.jena.arq.query.ReadWrite ;
-import org.apache.jena.arq.sparql.core.AbstractDatasetGraphTests ;
 import org.apache.jena.arq.sparql.core.DatasetGraph ;
 import org.apache.jena.dboe.tdb2.junit.TL;
 import org.junit.After ;

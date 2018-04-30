@@ -22,7 +22,7 @@ import java.io.ByteArrayInputStream ;
 import java.io.ByteArrayOutputStream ;
 import java.util.Arrays ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.riot.Lang ;
 import org.apache.jena.arq.riot.RDFDataMgr ;
 import org.apache.jena.arq.sparql.core.DatasetGraph ;

@@ -19,23 +19,28 @@
 package org.apache.jena.arq.sparql.junit;
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
 
+@DisplayName("SurpressedTest")
+@ExtendWith(TestItemParameterResolver.class)
 public class SurpressedTest extends EarlTestCase implements Test {
     public static boolean verbose = true ;
     String comment ;
-    
-    public SurpressedTest(String testName, EarlReport report, TestItem testItem)
+    TestItem testItem ;
+
+    public SurpressedTest(TestItem testItem)
     {
-        super(testName, testItem.getURI(), report) ;
-        this.comment = testItem.getComment() ;
+        this.testItem = testItem;
     }
 
     @Override
-    public void runTestForReal(TestInfo testInfo)
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         super.notTested() ;
         if ( verbose )

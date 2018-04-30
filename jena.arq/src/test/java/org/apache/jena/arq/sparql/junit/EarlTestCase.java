@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.junit;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import junit.framework.AssertionFailedError ;
-import junit.framework.TestCase ;
+
 import org.apache.jena.arq.query.Query ;
 import org.apache.jena.arq.query.QueryFactory ;
 import org.apache.jena.arq.query.Syntax ;
@@ -31,6 +31,7 @@ import org.apache.jena.arq.update.UpdateRequest ;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 
 public abstract class EarlTestCase
@@ -39,9 +40,9 @@ public abstract class EarlTestCase
     public String testURI;
     private boolean resultRecorded = false ;
 
-    public EarlTestCase(String name, String testURI, EarlReport earl)
+    public EarlTestCase()
     {
-        this.report = earl ;
+        this.report = null ;
         this.testURI = testURI ;
     }
 
@@ -60,7 +61,7 @@ public abstract class EarlTestCase
     {
         if ( testItem.getQueryFile() == null )
         {
-            fail("Query test file is null") ;
+            //fail("Query test file is null") ;
             return null ;
         }
 
@@ -77,7 +78,7 @@ public abstract class EarlTestCase
     {
         if ( testItem.getQueryFile() == null )
         {
-            fail("Query test file is null") ;
+            //fail("Query test file is null") ;
             return null ;
         }
 
@@ -86,10 +87,10 @@ public abstract class EarlTestCase
     }
 
     @Before
-    final public void runTest(TestInfo testInfo) throws Throwable
+    final public void runTest(TestInfo testInfo, TestReporter testReporter) throws Throwable
     {
         try {
-            runTestForReal(testInfo) ;
+            runTestForReal(testInfo, testReporter) ;
             if ( ! resultRecorded )
                 success() ;
         } catch (AssertionFailedError ex)
@@ -100,7 +101,7 @@ public abstract class EarlTestCase
         }
     }
 
-    public abstract void runTestForReal(TestInfo testInfo) throws Throwable ;
+    public abstract void runTestForReal(TestInfo testInfo, TestReporter testReporter) throws Throwable ;
 
     // Increase visibility.
     @Before

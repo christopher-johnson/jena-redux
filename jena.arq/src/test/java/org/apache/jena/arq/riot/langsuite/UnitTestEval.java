@@ -31,7 +31,9 @@ import org.apache.jena.arq.sparql.core.DatasetGraph ;
 import org.apache.jena.arq.sparql.core.DatasetGraphFactory ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
 import org.apache.jena.arq.sparql.util.IsoMatcher ;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
@@ -44,7 +46,6 @@ public class UnitTestEval extends LangTestCase implements Test {
     
     public UnitTestEval(String name, String testURI, String input, String output, String baseIRI, Lang lang, EarlReport earl)
     {
-        super(name, testURI, earl) ;
         this.input = input ;
         this.output = output ;
         this.baseIRI = baseIRI ;
@@ -59,8 +60,9 @@ public class UnitTestEval extends LangTestCase implements Test {
     public void _tearDown()
     {}
 
-    @Override
-    public void runTestForReal(TestInfo testInfo)
+    @DisplayName("UnitTestEval")
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         // Could generalise run4() to cover both cases.
         // run3() predates dataset reading and is more tested. 

@@ -24,8 +24,8 @@ import org.apache.jena.core.rdf.model.Resource ;
 import org.apache.jena.arq.riot.RDFLanguages ;
 import org.apache.jena.arq.riot.RiotException ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
-import org.apache.jena.core.util.junit.TestFactoryManifest ;
-import org.apache.jena.core.util.junit.TestUtils ;
+import org.apache.jena.arq.TestFactoryManifest;
+import org.apache.jena.arq.TestUtils;
 import org.apache.jena.core.vocabulary.RDF ;
 
 public class FactoryTestRiot extends TestFactoryManifest

@@ -4,6 +4,8 @@ module org.apache.jena.core {
     requires org.apache.jena.iri;
     requires org.apache.servicemix.bundles.xerces;
     requires java.xml;
+    requires org.apache.commons.io;
+    requires org.apache.commons.codec;
     exports org.apache.jena.core;
     exports org.apache.jena.core.datatypes;
     exports org.apache.jena.core.graph;
@@ -14,4 +16,21 @@ module org.apache.jena.core {
     exports org.apache.jena.core.sys;
     exports org.apache.jena.core.rdf.model.impl;
     exports org.apache.jena.core.vocabulary;
+    exports org.apache.jena.core.graph.impl;
+    exports org.apache.jena.core.datatypes.xsd.impl;
+    exports org.apache.jena.core.util.iterator;
+    exports org.apache.jena.core.rdfxml.xmloutput.impl;
+    exports org.apache.jena.core.rdfxml.xmlinput;
+    exports org.apache.jena.core.rdfxml.xmlinput.impl;
+    exports org.apache.jena.core.shared.impl;
+    exports org.apache.jena.core.assembler;
+    exports org.apache.jena.core.assembler.assemblers;
+    exports org.apache.jena.core.ontology;
+    exports org.apache.jena.core.reasoner;
+    exports org.apache.jena.core.reasoner.rulesys;
+    exports org.apache.jena.core.n3;
+    exports org.apache.jena.core.assembler.exceptions;
+    exports org.apache.jena.core.graph.compose;
+    exports org.apache.jena.core.mem;
+    exports org.apache.jena.core.shared.uuid;
 }

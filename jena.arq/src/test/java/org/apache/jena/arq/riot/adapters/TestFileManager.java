@@ -20,7 +20,7 @@ package org.apache.jena.arq.riot.adapters;
 
 import java.io.InputStream ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.ontology.Individual ;
 import org.apache.jena.core.ontology.OntModel ;
 import org.apache.jena.core.ontology.OntModelSpec ;

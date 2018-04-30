@@ -33,7 +33,11 @@ import org.apache.jena.arq.riot.RiotException ;
 import org.apache.jena.arq.riot.system.ErrorHandler ;
 import org.apache.jena.arq.riot.system.ErrorHandlerFactory ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
@@ -44,7 +48,6 @@ public class UnitTestBadSyntax extends LangTestCase implements Test {
 
     public UnitTestBadSyntax(String name, String testURI, String uri, Lang lang, EarlReport earl)
     {
-        super(name, testURI, earl) ;
         this.uri = uri ;
         this.lang = lang ;
     }
@@ -73,14 +76,15 @@ public class UnitTestBadSyntax extends LangTestCase implements Test {
         }
     } ;
 
-    @Override
+    @Before
     public void _setUp()         { BaseTest2.setTestLogging(ErrorHandlerFactory.errorHandlerStrictNoLogging) ; }
 
-    @Override
+    @After
     public void _tearDown()      { BaseTest2.unsetTestLogging() ; }
 
-    @Override
-    public void runTestForReal(TestInfo testInfo)
+    @DisplayName("UnitTestBadSyntax")
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;

@@ -20,8 +20,8 @@ package org.apache.jena.dboe.tdb2.store;
 
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.ReadWrite ;
-import org.apache.jena.arq.sparql.core.AbstractTestDynamicDataset ;
 import org.apache.jena.dboe.tdb2.TDB2;
+import org.apache.jena.dboe.tdb2.junit.AbstractTestDynamicDataset;
 import org.apache.jena.dboe.tdb2.junit.TL;
 
 public class TestDynamicDatasetTDB extends AbstractTestDynamicDataset

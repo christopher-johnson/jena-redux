@@ -21,7 +21,7 @@ package org.apache.jena.arq.riot.lang;
 import java.util.ArrayList ;
 import java.util.List ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.NodeFactory ;
 import org.apache.jena.arq.riot.out.NodeToLabel ;

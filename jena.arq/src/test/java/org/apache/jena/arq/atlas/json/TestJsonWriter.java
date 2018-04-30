@@ -20,7 +20,7 @@ package org.apache.jena.arq.atlas.json;
 
 import static org.apache.jena.arq.atlas.json.LibJsonTest.writeRead ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.junit.Test ;
 
 public class TestJsonWriter extends BaseTest

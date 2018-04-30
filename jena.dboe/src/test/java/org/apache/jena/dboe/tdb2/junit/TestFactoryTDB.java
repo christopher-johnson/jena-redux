@@ -19,15 +19,17 @@
 package org.apache.jena.dboe.tdb2.junit;
 
 import junit.framework.Test ;
-import junit.framework.TestCase ;
 import junit.framework.TestSuite ;
-import org.apache.jena.core.rdf.model.Resource ;
-import org.apache.jena.arq.sparql.junit.EarlReport ;
-import org.apache.jena.arq.sparql.junit.SurpressedTest ;
-import org.apache.jena.arq.sparql.junit.TestItem ;
-import org.apache.jena.arq.sparql.vocabulary.TestManifestX ;
-import org.apache.jena.core.util.junit.TestFactoryManifest ;
 
+import org.apache.jena.core.rdf.model.Resource ;
+import org.apache.jena.dboe.EarlReport ;
+import org.apache.jena.arq.sparql.vocabulary.TestManifestX ;
+import org.apache.jena.dboe.TestItem;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@DisplayName("TestFactoryTDB")
+@ExtendWith(TestItemParameterResolver.class)
 public class TestFactoryTDB extends TestFactoryManifest
 {
     public static EarlReport report = null ;
@@ -70,17 +72,17 @@ public class TestFactoryTDB extends TestFactoryManifest
         if ( testItem.getTestType() != null )
         {
             if ( testItem.getTestType().equals(TestManifestX.TestQuery) )
-                test = new QueryTestTDB(testName, report, testItem) ;
+                test = new QueryTestTDB(testItem) ;
             
             if ( testItem.getTestType().equals(TestManifestX.TestSurpressed) )
-                test = new SurpressedTest(testName, report, testItem) ;
+                test = new SurpressedTest(testItem) ;
             
             if ( test == null )
                 System.err.println("Unrecognized test type: "+testItem.getTestType()) ;
         }
         // Default 
         if ( test == null )
-            test = new QueryTestTDB(testName, report, testItem) ;
+            test = new QueryTestTDB(testItem) ;
 
         return test ;
     }

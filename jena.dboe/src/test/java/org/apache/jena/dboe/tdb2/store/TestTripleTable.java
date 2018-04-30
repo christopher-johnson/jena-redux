@@ -31,15 +31,13 @@ import org.apache.jena.dboe.tdb2.setup.TDBBuilder;
 import org.apache.jena.dboe.tdb2.store.DatasetGraphTDB;
 import org.apache.jena.dboe.tdb2.store.DatasetGraphTxn;
 import org.apache.jena.dboe.tdb2.store.TripleTable;
-import org.apache.log4j.Level ;
-import org.apache.log4j.Logger ;
 import org.junit.Test ;
 
 public class TestTripleTable
 {
     static {
-        Logger.getLogger("org.apache.jena.tdb.info").setLevel(Level.WARN) ;
-        Logger.getLogger("org.apache.jena.tdb.exec").setLevel(Level.WARN) ;
+        //Logger.getLogger("org.apache.jena.tdb.info").setLevel(Level.WARN) ;
+        //Logger.getLogger("org.apache.jena.tdb.exec").setLevel(Level.WARN) ;
     }
 
     private static void add(TripleTable table, Node s, Node p, Node o)

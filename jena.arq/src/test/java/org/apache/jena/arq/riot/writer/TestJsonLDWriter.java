@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 
 import org.apache.jena.arq.atlas.json.JsonObject;
 import org.apache.jena.arq.atlas.json.JsonString;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.query.DatasetFactory;
 import org.apache.jena.core.rdf.model.Model;
 import org.apache.jena.core.rdf.model.ModelFactory;
@@ -44,7 +44,6 @@ import org.apache.jena.arq.sparql.core.DatasetGraph;
 import org.apache.jena.arq.sparql.util.Context;
 import org.apache.jena.arq.sparql.vocabulary.FOAF;
 import org.apache.jena.core.vocabulary.RDF;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -277,7 +276,7 @@ public class TestJsonLDWriter extends BaseTest {
             // maybe test run in a setting wo external connectivity - not a real problem
             String mess = e.getMessage();
             if ((mess != null) && (mess.contains("loading remote context failed"))) {
-                Logger.getLogger(getClass()).info(mess);
+                //Logger.getLogger(getClass()).info(mess);
                 e.printStackTrace();
             } else {
                 throw e;

@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.riot.lang;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.iri.IRI ;
 import org.apache.jena.iri.IRIFactory ;

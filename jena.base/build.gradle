@@ -20,12 +20,13 @@ dependencies {
     compile("com.google.guava:guava:$guavaVersion")
     compile("com.github.andrewoma.dexx:collection:$dexxCollectionVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
-    compile("log4j:log4j:$log4jVersion")
     compile("org.apache.commons:commons-csv:$commonsCsvVersion")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("org.slf4j:slf4j-api:$slf4jVersion")
-
-    testCompile("org.awaitility:awaitility:$awaitilityVersion")
+    testCompile("org.awaitility:awaitility:$awaitilityVersion") {
+        exclude(module: 'hamcrest-core')
+        exclude(module: 'hamcrest-library')
+    }
 }
 
 task packageTests(type: Jar) {

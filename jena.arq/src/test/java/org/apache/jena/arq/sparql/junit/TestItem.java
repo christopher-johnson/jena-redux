@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.jena.arq.sparql.junit ;
+package org.apache.jena.arq.sparql.junit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +35,8 @@ import org.apache.jena.arq.sparql.vocabulary.TestManifestX;
 import org.apache.jena.arq.sparql.vocabulary.VocabTestQuery;
 import org.apache.jena.core.util.FileManager;
 import org.apache.jena.core.util.iterator.ClosableIterator;
-import org.apache.jena.core.util.junit.TestException;
-import org.apache.jena.core.util.junit.TestUtils;
+import org.apache.jena.arq.TestException;
+import org.apache.jena.arq.TestUtils;
 import org.apache.jena.core.vocabulary.RDF;
 import org.apache.jena.core.vocabulary.RDFS;
 
@@ -65,6 +65,8 @@ public class TestItem
     private Resource     testType         = null ;
     private String       queryFile ;
     private Syntax       queryFileSyntax ;
+
+    public TestItem() {}
 
     public static TestItem create(Resource entry, Resource defaultTestType) {
         return new TestItem(entry, defaultTestType) ;

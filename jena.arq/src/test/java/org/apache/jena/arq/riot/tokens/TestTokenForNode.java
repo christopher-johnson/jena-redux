@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.riot.tokens;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.arq.riot.system.PrefixMap ;
 import org.apache.jena.arq.riot.system.PrefixMapFactory ;

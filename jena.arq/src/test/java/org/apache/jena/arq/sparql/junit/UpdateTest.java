@@ -40,11 +40,11 @@ import org.apache.jena.arq.update.UpdateFactory ;
 import org.apache.jena.arq.update.UpdateRequest ;
 import org.apache.jena.core.util.FileManager ;
 import org.apache.jena.core.util.iterator.ClosableIterator ;
-import org.apache.jena.core.util.junit.TestUtils ;
 import org.apache.jena.core.vocabulary.RDFS ;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
@@ -70,7 +70,6 @@ public class UpdateTest extends EarlTestCase implements Test {
     }
     private UpdateTest(String testName, EarlReport earl, Resource entry, Resource action, Resource result)
     {
-        super(TestUtils.safeName(testName), entry.getURI(), earl) ;
         this.action = action ;
         this.result = result ;
         /*
@@ -108,7 +107,7 @@ public class UpdateTest extends EarlTestCase implements Test {
     }
     
     @Override
-    public void runTestForReal(TestInfo testInfo)
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         try {
             UpdateRequest request = UpdateFactory.read(updateFile, Syntax.syntaxSPARQL_11) ;

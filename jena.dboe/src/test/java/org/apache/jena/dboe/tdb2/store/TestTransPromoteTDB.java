@@ -18,23 +18,16 @@
 
 package org.apache.jena.dboe.tdb2.store;
 
-import org.apache.jena.dboe.transaction.txn.Transaction;
 import org.apache.jena.dboe.transaction.txn.TransactionException;
 import org.apache.jena.arq.sparql.core.DatasetGraph;
-import org.apache.jena.arq.sparql.transaction.AbstractTestTransPromote;
 import org.apache.jena.dboe.tdb2.DatabaseMgr;
-import org.apache.log4j.Logger;
 
 public class TestTransPromoteTDB extends AbstractTestTransPromote {
 
     public TestTransPromoteTDB() {
-        super(getLoggers());
+
     }
 
-    private static Logger[] getLoggers() {
-        return new Logger[]{ Logger.getLogger(Transaction.class) } ;
-    }
-    
     @Override
     protected Class<? extends Exception> getTransactionExceptionClass() {
         return TransactionException.class;

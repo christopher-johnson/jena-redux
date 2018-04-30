@@ -34,7 +34,9 @@ import org.apache.jena.core.shared.JenaException ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
 import org.junit.After ;
 import org.junit.Before ;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
@@ -45,14 +47,12 @@ public class UnitTestBadEval extends LangTestCase implements Test {
 
     protected UnitTestBadEval(String name, String testURI, String uri, Lang lang, EarlReport earl)
     {
-        super(name, testURI, earl) ;
         this.input = uri ;
         this.lang = lang ;
     }
     
     protected ErrorHandler installed ;
     
-    @Override
     @Before
     public void _setUp()
     {
@@ -60,16 +60,16 @@ public class UnitTestBadEval extends LangTestCase implements Test {
         ErrorHandlerFactory.setDefaultErrorHandler(ErrorHandlerFactory.errorHandlerStrictSilent()) ;
     }
     
-    @Override
     @After
     public void _tearDown()
     {
         ErrorHandlerFactory.setDefaultErrorHandler(installed) ;
     }
-    
 
-    @Override
-    public void runTestForReal(TestInfo testInfo)
+
+    @DisplayName("UnitTestBadEval")
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;

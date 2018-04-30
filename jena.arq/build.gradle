@@ -9,6 +9,7 @@ ext {
 
 javaModule {
     name = javaModuleName
+    extraTestModules = ['org.apache.jena.base', 'org.apache.jena.core']
 }
 
 dependencies {
@@ -43,8 +44,12 @@ dependencies {
 
     testCompile project(path: ':jena.base', configuration: 'testOutput')
     testCompile project(path: ':jena.core', configuration: 'testOutput')
-    testCompile("org.awaitility:awaitility:$awaitilityVersion")
+    testCompile("org.awaitility:awaitility:$awaitilityVersion") {
+        exclude(module: 'hamcrest-core')
+        exclude(module: 'hamcrest-library')
+    }
     testCompile("com.google.guava:guava:$guavaVersion")
+    testCompile("org.mockito:mockito-all:$mockitoVersion")
 }
 
 task packageTests(type: Jar) {

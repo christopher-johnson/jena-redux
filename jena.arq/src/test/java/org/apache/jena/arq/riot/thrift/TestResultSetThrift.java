@@ -24,7 +24,7 @@ import java.io.IOException ;
 import java.io.InputStream ;
 
 import org.apache.jena.base.atlas.io.IO ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.StrUtils ;
 import org.apache.jena.arq.query.ResultSet ;
 import org.apache.jena.arq.query.ResultSetFactory ;

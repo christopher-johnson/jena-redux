@@ -70,15 +70,21 @@ import org.apache.jena.arq.sparql.resultset.SPARQLResult;
 import org.apache.jena.arq.sparql.util.IsoMatcher;
 import org.apache.jena.arq.sparql.vocabulary.ResultSetGraphVocab;
 import org.apache.jena.core.util.FileUtils;
-import org.apache.jena.core.util.junit.TestUtils;
 import org.apache.jena.core.vocabulary.RDF;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
 
+@Disabled
+@DisplayName("QueryTest")
+@ExtendWith(TestItemParameterResolver.class)
 public class QueryTest extends EarlTestCase implements Test {
     private static int testCounter = 1 ;
     private int testNumber = testCounter++ ;
@@ -89,10 +95,9 @@ public class QueryTest extends EarlTestCase implements Test {
     // If supplied with a model, the test will load that model with data from the source
     // If no model is supplied one is created or attached (e.g. a database)
 
-    public QueryTest(String testName, EarlReport earl, TestItem t)
+    public QueryTest(TestItem item)
     {
-        super(TestUtils.safeName(testName), t.getURI(), earl) ;
-        testItem = t ;
+        testItem = item;
     }
     private boolean oldWarningFlag  ;
     private boolean oldPlainGraphFlag  ;
@@ -136,9 +141,9 @@ public class QueryTest extends EarlTestCase implements Test {
                 // Not specified in the query - get from test item and load
                 return createDataset(testItem.getDefaultGraphURIs(), testItem.getNamedGraphURIs()) ;
 
-            if ( ! doesQueryHaveDataset(query) ) 
+            if ( ! doesQueryHaveDataset(query) ) {
                 fail("No dataset") ;
-
+            }
             // Left to query
           return null ;
       
@@ -181,9 +186,9 @@ public class QueryTest extends EarlTestCase implements Test {
         }
         return ds;
     }
-    
-    @Override
-    public void runTestForReal(TestInfo testInfo) throws Throwable
+
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter) throws Throwable
     {
         Query query = null ;
         try {

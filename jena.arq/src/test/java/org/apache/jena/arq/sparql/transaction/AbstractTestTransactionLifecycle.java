@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.base.atlas.lib.Lib;
 import org.apache.jena.arq.query.Dataset;
 import org.apache.jena.arq.query.ReadWrite;

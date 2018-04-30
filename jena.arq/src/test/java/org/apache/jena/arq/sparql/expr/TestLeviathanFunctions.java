@@ -22,7 +22,7 @@ import static org.apache.jena.arq.sparql.expr.LibTestExpr.test ;
 import static org.apache.jena.arq.sparql.expr.LibTestExpr.testDouble ;
 import static org.apache.jena.arq.sparql.expr.LibTestExpr.testError ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.sparql.util.NodeFactoryExtra ;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

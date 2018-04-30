@@ -22,7 +22,6 @@ import org.apache.jena.arq.query.DatasetAccessorFactory ;
 import org.apache.jena.arq.query.ReadWrite ;
 import org.apache.jena.arq.sparql.core.DatasetGraph ;
 import org.apache.jena.dboe.tdb2.junit.TL;
-import org.apache.jena.arq.web.AbstractTestDatasetGraphAccessor ;
 import org.apache.jena.arq.web.DatasetGraphAccessor ;
 import org.junit.After ;
 import org.junit.Before ;

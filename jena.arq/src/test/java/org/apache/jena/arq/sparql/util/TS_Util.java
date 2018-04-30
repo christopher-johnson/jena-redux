@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.util;
 
-import org.apache.jena.base.atlas.lib.TestDateTimeUtils ;
+import org.apache.jena.arq.TestDateTimeUtils ;
 import org.apache.jena.arq.sparql.util.compose.TS_DatasetCollectors;
 import org.junit.runner.RunWith ;
 import org.junit.runners.Suite ;

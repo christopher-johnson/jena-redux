@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.junit;
 import org.apache.jena.arq.query.Syntax ;
 import org.apache.jena.core.rdf.model.Resource ;
 import org.apache.jena.arq.sparql.vocabulary.TestManifestX ;
-import org.apache.jena.core.util.junit.TestUtils ;
+import org.apache.jena.arq.TestUtils;
 
 /** com.hp.hpl.jena.query.test.TestUtils */
 

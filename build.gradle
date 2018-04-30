@@ -28,7 +28,6 @@ ext {
     jsonLdVersion = '0.11.1'
     jsr305Version = '3.0.2'
     libthriftVersion = '0.10.0'
-    log4jVersion = '1.2.17'
     servicemixXercesVersion = '2.11.0_1'
     slf4jVersion = '1.7.25'
     xmlApisVersion = '1.4.01'
@@ -39,6 +38,7 @@ ext {
     hamcrestLibraryVersion = '1.3'
     junitContractsVersion = '0.2.0'
     junitVersion = '5.1.1'
+    junit4Version = '4.12'
     junitPlatformVersion = '1.1.1'
     logbackVersion = '1.2.3'
     mockitoVersion = '1.10.19'
@@ -70,6 +70,7 @@ allprojects { subproj ->
 
     configurations {
         all {
+            exclude(module: 'log4j')
             exclude(module: 'jsr305')
             exclude(module: 'commons-logging')
             exclude group: 'javax.inject', module: 'javax.inject'
@@ -82,13 +83,16 @@ allprojects { subproj ->
 
     dependencies {
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
         testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
-        testImplementation("junit:junit:4.12")
-        testRuntime("org.junit.vintage:junit-vintage-engine:${junitVersion}")
+        testImplementation("junit:junit:$junit4Version"){
+            exclude (module: 'hamcrest-core')
+        }
+        testImplementation("org.mockito:mockito-all:$mockitoVersion")
+        testRuntime("org.junit.vintage:junit-vintage-engine:${junitVersion}"){
+            exclude (module: 'hamcrest-core')
+        }
         compile("org.slf4j:slf4j-api:$slf4jVersion")
-        compile("org.slf4j:slf4j-log4j12:$slf4jVersion")
-        compile("log4j:log4j:$log4jVersion")
-        testCompile("org.hamcrest:hamcrest-core:$hamcrestLibraryVersion")
     }
 }
 

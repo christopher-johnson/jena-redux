@@ -19,7 +19,6 @@
 package org.apache.jena.arq.sparql.junit;
 
 import junit.framework.Test ;
-import junit.framework.TestCase ;
 import junit.framework.TestSuite ;
 import org.apache.jena.base.atlas.logging.Log ;
 import org.apache.jena.arq.query.Syntax ;
@@ -29,8 +28,8 @@ import org.apache.jena.arq.sparql.vocabulary.TestManifestUpdate_11 ;
 import org.apache.jena.arq.sparql.vocabulary.TestManifestX ;
 import org.apache.jena.arq.sparql.vocabulary.TestManifest_11 ;
 import org.apache.jena.core.util.FileManager ;
-import org.apache.jena.core.util.junit.TestFactoryManifest ;
-import org.apache.jena.core.util.junit.TestUtils ;
+import org.apache.jena.arq.TestFactoryManifest;
+import org.apache.jena.arq.TestUtils;
 
 
 public class ScriptTestSuiteFactory extends TestFactoryManifest
@@ -50,7 +49,7 @@ public class ScriptTestSuiteFactory extends TestFactoryManifest
     static public TestSuite make(String query, String data, String result)
     {
         TestItem item = TestItem.create(query, query, data, result) ;
-        QueryTest t = new QueryTest(item.getName(), null, item) ;
+        QueryTest t = new QueryTest(item) ;
         TestSuite ts = new TestSuite() ;
         ts.setName(TestUtils.safeName(query)) ;
         ts.addTest(t) ;
@@ -89,25 +88,25 @@ public class ScriptTestSuiteFactory extends TestFactoryManifest
         {
             // == Good syntax
             if ( testType.equals(TestManifest.PositiveSyntaxTest) )
-                return new SyntaxTest(testName, results, item) ;
+                return new SyntaxTest(item) ;
             if ( testType.equals(TestManifest_11.PositiveSyntaxTest11) )
-                return new SyntaxTest(testName, results, item) ;
+                return new SyntaxTest(item) ;
             if ( testType.equals(TestManifestX.PositiveSyntaxTestARQ) )
-                return new SyntaxTest(testName, results, item) ;
+                return new SyntaxTest(item) ;
 
             // == Bad
             if ( testType.equals(TestManifest.NegativeSyntaxTest) )
-                return new SyntaxTest(testName, results, item, false) ;
+                return new SyntaxTest(item) ;
             if ( testType.equals(TestManifest_11.NegativeSyntaxTest11) )
-                return new SyntaxTest(testName, results, item, false) ;
+                return new SyntaxTest(item) ;
             if ( testType.equals(TestManifestX.NegativeSyntaxTestARQ) )
-                return new SyntaxTest(testName, results, item, false) ;
+                return new SyntaxTest(item) ;
             
             // ---- Update tests
             if ( testType.equals(TestManifest_11.PositiveUpdateSyntaxTest11) )
-                return new SyntaxUpdateTest(testName, results, item, true) ;
+                return new SyntaxUpdateTest(item) ;
             if ( testType.equals(TestManifest_11.NegativeUpdateSyntaxTest11) )
-                return new SyntaxUpdateTest(testName, results, item, false) ;
+                return new SyntaxUpdateTest(item) ;
 
             // Two names for same thing.
             // Note item is not passed down.
@@ -119,19 +118,19 @@ public class ScriptTestSuiteFactory extends TestFactoryManifest
             // ----
             
             if ( testType.equals(TestManifestX.TestSerialization) )
-                return new TestSerialization(testName, results, item) ;
+                return new TestSerialization(item) ;
             
             if ( testType.equals(TestManifest.QueryEvaluationTest)
                 || testType.equals(TestManifestX.TestQuery)
                 )
-                return new QueryTest(testName, results, item) ;
+                return new QueryTest(item) ;
             
             // Reduced is funny.
             if ( testType.equals(TestManifest.ReducedCardinalityTest) )
-                return new QueryTest(testName, results, item) ;
+                return new QueryTest(item) ;
             
             if ( testType.equals(TestManifestX.TestSurpressed) )
-                return new SurpressedTest(testName, results, item) ;
+                return new SurpressedTest(item) ;
             
             if ( testType.equals(TestManifest_11.CSVResultFormatTest) )
             {
@@ -142,7 +141,7 @@ public class ScriptTestSuiteFactory extends TestFactoryManifest
             System.err.println("Test type '"+testType+"' not recognized") ;
         }
         // Default 
-        test = new QueryTest(testName, results, item) ;
+        test = new QueryTest(item) ;
         return test ;
     }
 }

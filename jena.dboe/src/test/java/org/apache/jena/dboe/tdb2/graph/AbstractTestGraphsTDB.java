@@ -20,7 +20,6 @@ package org.apache.jena.dboe.tdb2.graph;
 
 import org.apache.jena.arq.sparql.engine.optimizer.reorder.ReorderLib ;
 import org.apache.jena.arq.sparql.engine.optimizer.reorder.ReorderTransformation ;
-import org.apache.jena.arq.sparql.graph.GraphsTests ;
 import org.apache.jena.dboe.tdb2.sys.SystemTDB;
 import org.junit.AfterClass ;
 import org.junit.BeforeClass ;

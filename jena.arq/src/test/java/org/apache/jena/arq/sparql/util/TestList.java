@@ -24,7 +24,7 @@ import java.util.Iterator ;
 import java.util.List ;
 
 import org.apache.jena.base.atlas.iterator.Iter ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.datatypes.xsd.XSDDatatype ;
 import org.apache.jena.core.graph.* ;
 import org.apache.jena.core.rdf.model.Model ;

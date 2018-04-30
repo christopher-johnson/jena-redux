@@ -41,7 +41,7 @@ public class ComponentId {
     /** Create a new ComponentId from the given bytes.
      * The bytes are <em>not</em> copied. 
      * The caller must not modify them after this call.
-     * The static method {@link #create(String, byte[])}
+     * The static method
      * does the copy.
      */
     private ComponentId(String label, UUID coordinatorId, byte[] bytes) {

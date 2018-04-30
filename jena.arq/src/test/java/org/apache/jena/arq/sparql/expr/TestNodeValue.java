@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.TimeZone ;
 
 import org.apache.jena.core.JenaRuntime ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.datatypes.xsd.XSDDatatype ;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.graph.NodeFactory ;

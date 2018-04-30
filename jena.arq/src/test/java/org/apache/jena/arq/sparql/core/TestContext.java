@@ -18,7 +18,7 @@
 
 package org.apache.jena.arq.sparql.core ;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.sparql.ARQException ;
 import org.apache.jena.arq.sparql.util.Context ;
 import org.apache.jena.arq.sparql.util.Symbol ;

@@ -19,8 +19,8 @@
 package org.apache.jena.dboe.tdb2.store;
 
 import org.apache.jena.arq.query.Dataset ;
-import org.apache.jena.arq.sparql.transaction.AbstractTestTransactionLifecycle;
 import org.apache.jena.dboe.tdb2.TDB2Factory;
+import org.apache.jena.dboe.tdb2.junit.AbstractTestTransactionLifecycle;
 
 /** Transaction tests - from ARQ */
 public class TestTransactionLifecycleTDB extends AbstractTestTransactionLifecycle

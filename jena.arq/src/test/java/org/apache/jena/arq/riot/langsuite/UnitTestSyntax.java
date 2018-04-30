@@ -20,30 +20,35 @@ package org.apache.jena.arq.riot.langsuite;
 
 import org.apache.jena.arq.query.Dataset ;
 import org.apache.jena.arq.query.DatasetFactory ;
+import org.apache.jena.arq.sparql.junit.TestItemParameterResolver;
 import org.apache.jena.core.rdf.model.Model ;
 import org.apache.jena.core.rdf.model.ModelFactory ;
 import org.apache.jena.arq.riot.Lang ;
 import org.apache.jena.arq.riot.RDFDataMgr ;
 import org.apache.jena.arq.riot.RDFLanguages ;
 import org.apache.jena.arq.sparql.junit.EarlReport ;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
 
+@DisplayName("UnitTestSyntax")
+@ExtendWith(TestItemParameterResolver.class)
 public class UnitTestSyntax extends LangTestCase implements Test {
     private final String uri ;
     private final Lang lang ;
 
     public UnitTestSyntax(String name, String testURI, String uri, Lang lang, EarlReport earl)
     {
-        super(name, testURI, earl) ;
         this.uri = uri ;
         this.lang = lang ;
     }
-    
-    @Override
-    public void runTestForReal(TestInfo testInfo)
+
+    @org.junit.jupiter.api.Test
+    public void runTestForReal(TestInfo testInfo, TestReporter testReporter)
     {
         if ( RDFLanguages.isTriples(lang) )
             run3() ;

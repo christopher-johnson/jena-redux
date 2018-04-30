@@ -21,7 +21,7 @@ package org.apache.jena.arq.sparql.expr;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.arq.query.ARQ ;
 import org.apache.jena.arq.sparql.engine.binding.BindingFactory ;
 import org.apache.jena.arq.sparql.util.Symbol;

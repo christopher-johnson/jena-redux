@@ -22,8 +22,9 @@ import junit.framework.TestCase;
 import org.apache.jena.core.n3.turtle.TurtleParseException ;
 import org.apache.jena.core.n3.turtle.TurtleReader ;
 import org.apache.jena.core.rdf.model.* ;
+import org.junit.jupiter.api.DisplayName;
 
-
+@DisplayName("TestBadSyntax")
 public class TestBadSyntax extends TestCase
 {
     String uri ;

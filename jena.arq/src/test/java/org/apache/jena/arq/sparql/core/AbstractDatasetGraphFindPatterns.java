@@ -26,7 +26,7 @@ import java.util.Collection ;
 import java.util.List ;
 
 import org.apache.jena.base.atlas.iterator.Iter ;
-import org.apache.jena.base.atlas.BaseTest;
+import org.apache.jena.arq.BaseTest;
 import org.apache.jena.core.graph.Node ;
 import org.apache.jena.arq.sparql.sse.SSE ;
 import org.junit.Test ;
