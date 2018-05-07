@@ -35,37 +35,39 @@ import org.slf4j.LoggerFactory;
 
 public class TestMacEncodings  extends ModelTestBase
 {
-	private static Logger logger = LoggerFactory.getLogger( TestMacEncodings.class );
+    private static Logger logger = LoggerFactory.getLogger( TestMacEncodings.class );
 
-	public TestMacEncodings( String name )
-		{ super( name ); }
-			
-	public static TestSuite suite()
-    	{ 
-	    TestSuite suite = new TestSuite( TestMacEncodings.class );
-        suite.setName("Encodings (particular MacRoman etc.)");
+    public TestMacEncodings( String name )
+    { super( name ); }
+
+    // JENA-1537
+    // Character encoding checks removed due to lack of support in JDK XML parser APIs.
+    public static TestSuite inactive_suite()
+    {
+        TestSuite suite = new TestSuite( TestMacEncodings.class );
+        suite.setName("Encodings - particular MacRoman etc.");
 
         try {
             OutputStream out = new ByteArrayOutputStream();
-            
+
             new OutputStreamWriter(out,"MacRoman");
             InUse = true;
         } catch (Exception e){
             InUse = false;
         }
-     if (!InUse){
-         logger.warn("MacRoman not supported on this Java installation: mac encoding tests suppressed.");
-        return suite;   
-     }
-		suite.addTest(new MoreTests("testARPMacRoman"));
-		suite.addTest(new MoreTests("testARPMacArabic"));
-	    return suite; }
+        if (!InUse){
+            logger.warn("MacRoman not supported on this Java installation: mac encoding tests suppressed.");
+            return suite;
+        }
+        suite.addTest(new MoreTests("testARPMacRoman"));
+        suite.addTest(new MoreTests("testARPMacArabic"));
+        return suite; }
     static private boolean InUse = false;
     /*
     public void test00InitMacTests() {
         try {
             OutputStream out = new ByteArrayOutputStream();
-            
+
             Writer wrtr = new OutputStreamWriter(out,"MacRoman");
             InUse = true;
         } catch (Exception e){
@@ -73,34 +75,34 @@ public class TestMacEncodings  extends ModelTestBase
         }
      if (!InUse){
          logger.warn("MacRoman not supported on this Java installation: mac encoding tests suppressed.");
-         
+
      }
-        
+
     }
      */
 
     public void testXMLWriterMacRoman() throws IOException {
         if (!InUse) return;
         XMLOutputTestBase.blockLogger();
-    	Model m = createMemModel();
-    	OutputStream fos = new ByteArrayOutputStream();
-    	Writer w = new OutputStreamWriter(fos,"MacRoman");
-    	m.write(w, "RDF/XML");
-    	assertTrue(XMLOutputTestBase.unblockLogger());
-    }	
+        Model m = createMemModel();
+        OutputStream fos = new ByteArrayOutputStream();
+        Writer w = new OutputStreamWriter(fos,"MacRoman");
+        m.write(w, "RDF/XML");
+        assertTrue(XMLOutputTestBase.unblockLogger());
+    }
 
 
     public void testXMLWriteMacArabic() throws IOException {
         if (!InUse) return;
         XMLOutputTestBase.blockLogger();
-    	Model m = createMemModel();
-    	OutputStream fos = new ByteArrayOutputStream();
-    	Writer w = new OutputStreamWriter(fos,"MacRoman");
-    	m.write(w, "RDF/XML");
-    	assertTrue(XMLOutputTestBase.unblockLogger());
-    }	
-    
-    
-    	
+        Model m = createMemModel();
+        OutputStream fos = new ByteArrayOutputStream();
+        Writer w = new OutputStreamWriter(fos,"MacRoman");
+        m.write(w, "RDF/XML");
+        assertTrue(XMLOutputTestBase.unblockLogger());
+    }
+
+
+
 
 }

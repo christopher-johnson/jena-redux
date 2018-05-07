@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 import org.apache.jena.core.rdf.model.impl.Util ;
 import org.apache.jena.core.shared.PrefixMapping ;
 import org.apache.jena.core.util.CollectionFactory ;
-import org.apache.xerces.util.XMLChar;
+import org.apache.jena.core.ext.xerces.util.XMLChar;
 
 /**
     An implementation of PrefixMapping. The mappings are stored in a pair

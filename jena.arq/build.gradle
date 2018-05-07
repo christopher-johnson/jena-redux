@@ -36,9 +36,6 @@ dependencies {
         exclude(module: 'httpcore')
         exclude(module: 'commons-lang3')
     }
-    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion"){
-        exclude group: 'xml-apis', module: 'xml-apis'
-    }
     compile("org.slf4j:jcl-over-slf4j:$slf4jVersion")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
 

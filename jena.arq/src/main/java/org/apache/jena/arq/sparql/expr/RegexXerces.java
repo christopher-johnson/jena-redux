@@ -18,9 +18,9 @@
 
 package org.apache.jena.arq.sparql.expr;
 
-import org.apache.xerces.impl.xpath.regex.ParseException ;
-import org.apache.xerces.impl.xpath.regex.REUtil ;
-import org.apache.xerces.impl.xpath.regex.RegularExpression ;
+import org.apache.jena.core.ext.xerces.impl.xpath.regex.ParseException;
+import org.apache.jena.core.ext.xerces.impl.xpath.regex.REUtil;
+import org.apache.jena.core.ext.xerces.impl.xpath.regex.RegularExpression;
 
 public class RegexXerces implements RegexEngine
 {
@@ -29,7 +29,6 @@ public class RegexXerces implements RegexEngine
     public RegexXerces(String pattern, String flags)
     {
         if ( flags.contains("q") )
-            // Nest we can do.
             pattern = REUtil.quoteMeta(pattern);
         regexPattern = makePattern(pattern, flags) ;
     }

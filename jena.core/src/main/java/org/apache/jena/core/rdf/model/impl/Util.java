@@ -28,7 +28,7 @@ import org.apache.jena.core.graph.Node ;
 import org.apache.jena.core.rdf.model.Literal ;
 import org.apache.jena.core.shared.CannotEncodeCharacterException ;
 import org.apache.jena.core.util.SplitIRI ;
-import org.apache.xerces.util.XMLChar ;
+import org.apache.jena.core.ext.xerces.util.XMLChar ;
 
 /** Some utility functions.
  */

@@ -2,7 +2,6 @@ module org.apache.jena.core {
     requires slf4j.api;
     requires org.apache.jena.base;
     requires org.apache.jena.iri;
-    requires org.apache.servicemix.bundles.xerces;
     requires java.xml;
     requires org.apache.commons.io;
     requires org.apache.commons.codec;
@@ -33,4 +32,6 @@ module org.apache.jena.core {
     exports org.apache.jena.core.graph.compose;
     exports org.apache.jena.core.mem;
     exports org.apache.jena.core.shared.uuid;
+    exports org.apache.jena.core.ext.xerces;
+    exports org.apache.jena.core.ext.xerces.impl.xpath.regex;
 }

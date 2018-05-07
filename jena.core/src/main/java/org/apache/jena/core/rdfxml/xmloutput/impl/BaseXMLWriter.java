@@ -38,7 +38,7 @@ import org.apache.jena.core.shared.* ;
 import org.apache.jena.core.util.CharEncoding ;
 import org.apache.jena.core.util.FileUtils ;
 import org.apache.jena.core.vocabulary.* ;
-import org.apache.xerces.util.XMLChar ;
+import org.apache.jena.core.ext.xerces.util.XMLChar ;
 import org.slf4j.Logger ;
 import org.slf4j.LoggerFactory ;
 

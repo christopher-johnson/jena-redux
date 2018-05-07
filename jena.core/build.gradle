@@ -16,9 +16,6 @@ dependencies {
     compile project(':jena.base')
     compile project(':jena.iri')
     compile("com.google.guava:guava:$guavaVersion")
-    compile("org.apache.servicemix.bundles:org.apache.servicemix.bundles.xerces:$servicemixXercesVersion"){
-        exclude group: 'xml-apis', module: 'xml-apis'
-    }
     compile("commons-cli:commons-cli:$commonsCliVersion")
     compile("commons-codec:commons-codec:$commonsCodecVersion")
     compile("org.slf4j:slf4j-api:$slf4jVersion")

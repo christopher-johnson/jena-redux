@@ -29,8 +29,8 @@ import java.util.Map ;
 
 import org.apache.jena.iri.IRI ;
 import org.apache.jena.core.rdfxml.xmlinput.ARPErrorNumbers ;
-import org.apache.xerces.util.XML11Char ;
-import org.apache.xerces.util.XMLChar ;
+import org.apache.jena.core.ext.xerces.util.XML11Char ;
+import org.apache.jena.core.ext.xerces.util.XMLChar ;
 import org.xml.sax.SAXParseException ;
 
 public class ParserSupport implements ARPErrorNumbers, Names {

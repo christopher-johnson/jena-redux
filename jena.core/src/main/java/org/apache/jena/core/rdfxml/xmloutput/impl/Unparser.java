@@ -128,7 +128,7 @@ import org.apache.jena.core.shared.JenaException ;
 import org.apache.jena.core.shared.PropertyNotFoundException ;
 import org.apache.jena.core.util.iterator.* ;
 import org.apache.jena.core.vocabulary.RDF ;
-import org.apache.xerces.util.XMLChar ;
+import org.apache.jena.core.ext.xerces.util.XMLChar ;
 import org.slf4j.Logger ;
 import org.slf4j.LoggerFactory ;
 
