@@ -6,8 +6,8 @@ module org.apache.jena.arq {
     requires libthrift;
     requires httpcore;
     requires jsonld.java;
-    requires jackson.core;
-    requires jackson.databind;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
     requires java.xml;
     requires com.google.common;
     requires collection;
@@ -63,4 +63,7 @@ module org.apache.jena.arq {
     exports org.apache.jena.arq.riot.tokens;
     exports org.apache.jena.arq.sparql.modify.request;
     exports org.apache.jena.arq.sparql.syntax;
+    uses org.apache.jena.core.sys.JenaSubsystemLifecycle;
+    provides org.apache.jena.core.sys.JenaSubsystemLifecycle with org.apache.jena.arq.riot.system.InitRIOT,org.apache.jena.arq.sparql.system.InitARQ;
+
 }

@@ -34,4 +34,6 @@ module org.apache.jena.core {
     exports org.apache.jena.core.shared.uuid;
     exports org.apache.jena.core.ext.xerces;
     exports org.apache.jena.core.ext.xerces.impl.xpath.regex;
+    uses org.apache.jena.core.sys.JenaSubsystemLifecycle;
+    provides org.apache.jena.core.sys.JenaSubsystemLifecycle with org.apache.jena.core.sys.InitJenaCore;
 }

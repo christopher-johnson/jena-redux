@@ -1,7 +1,7 @@
 module org.apache.jena.base {
     requires slf4j.api;
     requires java.logging;
-    requires commons.lang3;
+    requires org.apache.commons.lang3;
     requires collection;
     exports org.apache.jena.base;
     exports org.apache.jena.base.atlas;

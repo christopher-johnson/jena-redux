@@ -13,8 +13,8 @@ javaModule {
 }
 
 dependencies {
-    compile project(':jena.base')
-    compile project(':jena.iri')
+    compile project(':jena.base-jpms')
+    compile project(':jena.iri-jpms')
     compile("com.google.guava:guava:$guavaVersion")
     compile("commons-cli:commons-cli:$commonsCliVersion")
     compile("commons-codec:commons-codec:$commonsCodecVersion")
@@ -24,7 +24,6 @@ dependencies {
         exclude(module: 'commons-cli')
         exclude(module: 'hamcrest-core')
     }
-    testCompile project(path: ':jena.base', configuration: 'testOutput')
     testCompile("org.mockito:mockito-all:$mockitoVersion")
     testCompile("org.awaitility:awaitility:$awaitilityVersion") {
         exclude(module: 'hamcrest-core')
@@ -59,5 +58,4 @@ jar {
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
-    appendix 'jpms'
 }

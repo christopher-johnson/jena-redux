@@ -12,9 +12,7 @@ javaModule {
 }
 
 dependencies {
-    compile project(':jena.arq')
-    testCompile project(path: ':jena.base', configuration: 'testOutput')
-    testCompile project(path: ':jena.core', configuration: 'testOutput')
+    compile project(':jena.arq-jpms')
 }
 
 task packageTests(type: Jar) {
@@ -35,5 +33,4 @@ jar {
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
-    appendix 'jpms'
 }

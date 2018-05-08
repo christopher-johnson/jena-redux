@@ -22,5 +22,4 @@ jar {
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
-    appendix 'jpms'
 }

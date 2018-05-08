@@ -56,5 +56,4 @@ jar {
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
 
     }
-    appendix 'jpms'
 }

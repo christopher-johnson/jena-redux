@@ -13,18 +13,19 @@ javaModule {
 }
 
 dependencies {
-    compile project(':jena.base')
-    compile project(':jena.core')
-    compile project(':jena.iri')
+    compile project(':jena.base-jpms')
+    compile project(':jena.core-jpms')
+    compile project(':jena.iri-jpms')
+    compile("com.github.andrewoma.dexx:collection:$dexxCollectionVersion")
     compile("com.google.guava:guava:$guavaVersion")
-    compile("org.glassfish.main:javax.annotation:$javaxAnnotationVersion")
+    compile ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion") {force = true}
+    compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion") {force = true}
+    compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion") {force = true}
     compile("org.apache.httpcomponents:httpclient:$httpClientVersion") {
         exclude(module: 'commons-logging')
     }
     compile("com.github.jsonld-java:jsonld-java:$jsonLdVersion") {
         exclude(module: 'commons-logging')
-        exclude(module: 'httpclient-cache')
-        exclude(module: 'httpclient')
         exclude(module: 'httpclient-osgi')
         exclude(module: 'httpcore-osgi')
         exclude(module: 'slf4j-api')
@@ -39,8 +40,6 @@ dependencies {
     compile("org.slf4j:jcl-over-slf4j:$slf4jVersion")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
 
-    testCompile project(path: ':jena.base', configuration: 'testOutput')
-    testCompile project(path: ':jena.core', configuration: 'testOutput')
     testCompile("org.awaitility:awaitility:$awaitilityVersion") {
         exclude(module: 'hamcrest-core')
         exclude(module: 'hamcrest-library')
@@ -75,5 +74,4 @@ jar {
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "$javaModuleName;version=$projectOsgiVersion"
     }
-    appendix 'jpms'
 }
